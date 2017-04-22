@@ -31,7 +31,7 @@ export let config = {
   },
 
   resources: {
-    basePath       : '',
+    basePath       : 'assets/',
     maxConcurrency : 10,
   },
 

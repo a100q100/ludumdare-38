@@ -1,0 +1,29 @@
+{
+  "plain": {
+    "id": "plain",
+    "image": "tile_plain",
+    "restrict": false,
+    "movementCost": 1
+  },
+
+  "forest": {
+    "id": "forest",
+    "image": "tile_forest",
+    "restrict": false,
+    "movementCost": 1
+  },
+
+  "mountain": {
+    "id": "mountain",
+    "image": "tile_mountain",
+    "restrict": true,
+    "movementCost": 3
+  },
+
+  "lake": {
+    "id": "lake",
+    "image": "tile_lake",
+    "restrict": true,
+    "movementCost": 5
+  }
+}

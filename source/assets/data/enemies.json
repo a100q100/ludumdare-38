@@ -1,0 +1,22 @@
+{
+  "goblin": {
+    "name": "Goblin",
+    "movement": 1,
+    "attack": "amount",
+    "defense": 0
+  },
+
+  "troll": {
+    "name": "Troll",
+    "movement": 1,
+    "attack": 10,
+    "defense": 6
+  },
+
+  "dragon": {
+    "name": "Dragon",
+    "movement": 1,
+    "attack": 20,
+    "defense": 20
+  }
+}
