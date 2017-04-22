@@ -29,7 +29,7 @@ export class movement {
     for (let i=0; i<neighboors.length; i++) {
       let coord = neighboors[i]
       let tile = this._board.tiles[coord]
-      let tileCost = tile.movementCost + pawn.movementMods[tile.id]||0
+      let tileCost = tile.movementCost + pawn.movementMods[tile.type]||0
 
       if (strength >= tileCost) return true
     }
@@ -37,12 +37,37 @@ export class movement {
     return false
   }
 
-  getTargets(pawnId) {
+  getTargets(pawn) {
+    let strength = pawn.actions
+    let results = []
 
+    // default neighboor is the target
+    let neighboors = this._board.getNeighboors(pawn.coord)
+
+    // check if the neighboors are ok
+    for (let i=0; i<neighboors.length; i++) {
+      let coord = neighboors[i]
+      let tile = this._board.tiles[coord]
+      let tileCost = tile.movementCost + pawn.movementMods[tile.type]||0
+
+      if (strength >= tileCost) {
+        results.push(coord)
+      }
+    }
+
+    return results
   }
 
-  perform(pawnId, target) {
+  perform(pawn, target) {
+    let targetTile = this._board.tiles[target]
+    let currentTile = this._board.tiles[pawn.coord]
 
+    currentTile.removePawn(pawn.id)
+    targetTile.addPawn(pawn.id)
+
+    pawn.coord = target
+
+    pawn.actions -= 1
   }
 }
 
@@ -85,12 +110,30 @@ export class attack {
     return false
   }
 
-  getTargets(pawnId) {
-    
+  getTargets(pawn) {
+    let results = []
+
+    // default neighboor is the target
+    let neighboors = this._board.getNeighboors(pawn.coord, pawn.range)
+    neighboors.push(pawn.coord)
+
+    // check if the neighboors are ok
+    for (let i=0; i<neighboors.length; i++) {
+      let coord = neighboors[i]
+      let tile = this._board.tiles[coord]
+
+      if (tile.enemies.length) {
+        results.push(coord)
+      }
+    }
+
+    return results
   }
 
-  perform(pawnId, target) {
+  perform(pawn, target) {
+    console.log('TODO: implement combat')
 
+    pawn.actions = 0
   }
 }
 
@@ -109,15 +152,19 @@ export class pickup {
       return false
     }
 
-    return !!this._board.tiles[target].items.length
+    return !!this._board.tiles[target].item
   }
 
-  getTargets(pawnId) {
-    
+  getTargets(pawn) {
+    return !!this._board.tiles[pawn.coord].item
   }
 
-  perform(pawnId, target) {
+  perform(pawn, target) {
+    let tile = this._board.tiles[pawn.coord]
+    let item = tile.removeItem()
 
+    this._board.inventory.push(item)
+    pawn.actions -= 1
   }
 }
 
@@ -126,15 +173,15 @@ export class wait {
     this._board = board
   }
 
-  canPerform(pawnId, target) {
+  canPerform(pawn, target) {
     return true
   }
 
-  getTargets(pawnId) {
-    return false
+  getTargets(pawn) {
+    return true
   }
 
-  perform(pawnId, target) {
-
+  perform(pawn, target) {
+    pawn.actions = 0
   }
 }

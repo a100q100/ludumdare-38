@@ -12,6 +12,7 @@ export default class Board {
     this._pawns = null
     this._enemies = null
     this._spawnPoints = null
+    this._inventory = null
     this._actions = {}
     
     for (let k in actions) {
@@ -22,6 +23,7 @@ export default class Board {
   get tiles() { return this._tiles }
   get spawnPoints() { return this._spawnPoints }
   get pawns() { return this._pawns }
+  get inventory() { return this._inventory }
 
   /**
    * Game initialization 
@@ -44,7 +46,7 @@ export default class Board {
     let initialCoord = [map.initial.q, map.initial.r]
     for (let k in heroes) {
       let data = this._types.heroes[heroes[k]]
-      this._pawns[k] = new Pawn(data, initialCoord)
+      this._pawns[k] = new Pawn(k, data, initialCoord)
 
       this.tiles[initialCoord].addPawn(k)
     }
@@ -81,8 +83,8 @@ export default class Board {
   /**
    * Action related 
    */
-  getActions(pawnId) {
-    let pawn = this._pawns[pawnId]
+  getActions(id) {
+    let pawn = this._pawns[id]
 
     // No action remaining to this pawn
     if (pawn.actions <= 0) {
@@ -102,16 +104,28 @@ export default class Board {
     return possibilities
   }
 
-  getTargets(pawnId, action) {
-
-    return this._actions[action].getPossibleTargets(pawnId)
+  getTargets(id, action) {
+    let pawn = this.pawns[id]
+    return this._actions[action].getTargets(pawn)
   }
 
-  act(pawnId, action, target) {
-    if (!pawnId in this._pendingPawnIds) {
-      console.error('Trying to perform an action in a pawn that don\'t have more actions')
+  act(id, action, target) {
+    let actions = this.getActions(id)
+
+    if (actions.indexOf(action) < 0) {
+      throw new Error('trying to perform an action on a pawn without the action')
     }
+
+    action = this._actions[action]
+
+    let pawn = this.pawns[id]
+    if (!action.canPerform(pawn, target)) {
+      throw new Error('trying to perform an action with an invalid target')
+    }
+
+    action.perform(pawn, target)
   }
+
 
 
 
@@ -120,6 +134,7 @@ export default class Board {
    */
   _initializeGame() {
     this._turn = 'player'
+    this._inventory = []
     
     this._initializePlayerTurn()
   }

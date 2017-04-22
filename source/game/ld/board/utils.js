@@ -25,6 +25,9 @@ export function neighboors(coord, range=1) {
     let r = pivot[1]
     for (let i=0; i<=d+distance; i++) {
       let q = pivot[0]+i
+
+      if (q === Q && r === R) continue
+
       result.push([q, r])
       if (r !== R) {
         result.push([q, 2*R-r])

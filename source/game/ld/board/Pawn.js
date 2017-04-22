@@ -1,6 +1,7 @@
 export default class Pawn {
-  constructor(data, coord) {
-    this.id = data.id
+  constructor(id, data, coord) {
+    this.id = id
+    this.type = data.type
     this.name = data.name
     this.title = data.title
     this.totalActions = 2

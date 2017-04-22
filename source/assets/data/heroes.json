@@ -1,6 +1,6 @@
 {
   "dwarf_warrior": {
-    "id": "dwarf_warrior",
+    "type": "dwarf_warrior",
     "name": "Myxzpylk",
     "title": "Dwarf Warrior",
     "actions": 2,
@@ -14,7 +14,7 @@
     "range": 0
   },
   "elf_ranger": {
-    "id": "elf_ranger",
+    "type": "elf_ranger",
     "name": "Kin'olin",
     "title": "Elf Ranger",
     "actions": 2,
@@ -27,7 +27,7 @@
     "range": 1
   },
   "human_defender": {
-    "id": "human_defender",
+    "type": "human_defender",
     "name": "Marieta Greta",
     "title": "Human Defender",
     "actions": 2,
@@ -39,7 +39,7 @@
     "range": 0
   },
   "human_mage": {
-    "id": "human_mage",
+    "type": "human_mage",
     "name": "Granjo Banjo",
     "title": "Human Mage",
     "actions": 2,
@@ -51,7 +51,7 @@
     "range": 1
   },
   "elf_archer": {
-    "id": "elf_archer",
+    "type": "elf_archer",
     "name": "Bin'golin",
     "title": "Elf Archer",
     "actions": 2,
@@ -63,7 +63,7 @@
     "range": 2
   },
   "dwarf_mage": {
-    "id": "dwarf_mage",
+    "type": "dwarf_mage",
     "name": "Thwryn",
     "title": "Dwarf Mage",
     "actions": 2,
@@ -77,7 +77,7 @@
     "range": 1
   },
   "human_specialist": {
-    "id": "human_specialist",
+    "type": "human_specialist",
     "name": "Nikota Piruca",
     "title": "Human Specialist",
     "actions": 3,
