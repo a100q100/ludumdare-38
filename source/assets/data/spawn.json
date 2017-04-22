@@ -1,0 +1,21 @@
+{
+  "0": [
+    {"enemy": "goblin", "amount": 4},
+    {"enemy": "goblin", "amount": 4},
+    {"enemy": "goblin", "amount": 4},
+    {"enemy": "goblin", "amount": 4},
+    {"enemy": "goblin", "amount": 6},
+    {"enemy": "goblin", "amount": 6},
+    {"enemy": "goblin", "amount": 6},
+    {"enemy": "goblin", "amount": 6},
+    {"enemy": "goblin", "amount": 8},
+    {"enemy": "goblin", "amount": 8},
+    {"enemy": "goblin", "amount": 8},
+    {"enemy": "goblin", "amount": 8},
+    {"enemy": "goblin", "amount": 10},
+    {"enemy": "goblin", "amount": 10},
+    {"enemy": "goblin", "amount": 10},
+    {"enemy": "goblin", "amount": 10},
+    {"enemy": "troll", "amount": 1}
+  ]
+}

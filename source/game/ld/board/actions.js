@@ -1,3 +1,5 @@
+import * as utils from 'ld/board/utils'
+
 export class movement {
   constructor(board) {
     this._board = board
@@ -5,6 +7,12 @@ export class movement {
 
   canPerform(pawn, target) {
     let strength = pawn.actions
+
+    // if there is enemies in the same time, it can't move
+    let currentTile = this._board.tiles[pawn.coord]
+    if (currentTile.enemies.length) {
+      return false
+    }
 
     // default neighboor is the target
     let neighboors = this._board.getNeighboors(pawn.coord)
@@ -131,7 +139,40 @@ export class attack {
   }
 
   perform(pawn, target) {
-    console.log('TODO: implement combat')
+    let enemies = this._board.getEnemies(target)
+
+    let attack = utils.dice(pawn.attack)
+    let deads = []
+
+    for (let i=0; i<enemies.length; i++) {
+      // console.log('pawn attacking with', attack)
+      let enemy = enemies[i]
+      let defense = utils.dice(enemy.defense)
+      // console.log(enemy.name, 'defending with', defense)
+
+      let dead = attack - defense
+
+      if (dead > 0) {
+        let total = enemy.amount - dead
+        if (total <= 0) {
+          // console.log(enemy.name, 'dead')
+          deads.push(i)
+          enemy.amount = total
+          attack = Math.abs(total)
+        } else {
+          // console.log(enemy.name, 'had', enemy.amount, 'and now have', total)
+          enemy.amount = total
+        }
+      } 
+    }
+
+    for (let i=0; i<deads.length; i++) {
+      // console.log('removing enemy ', deads[i], 'from board')
+      let enemy = this._board.enemies.splice(deads[i], 1)[0]
+      let tile = this._board.tiles[enemy.coord]
+
+      tile.removeEnemy(enemy.id)
+    }
 
     pawn.actions = 0
   }

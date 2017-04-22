@@ -3,4 +3,5 @@ export let manifest = [
   {id:'data_enemies', type:'json', url:'data/enemies.json'},
   {id:'data_heroes', type:'json', url:'data/heroes.json'},
   {id:'data_tiles', type:'json', url:'data/tiles.json'},
+  {id:'data_spawn', type:'json', url:'data/spawn.json'},
 ]

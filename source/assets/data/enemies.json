@@ -1,5 +1,7 @@
 {
   "goblin": {
+    "type": "goblin",
+    "priority": 1,
     "name": "Goblin",
     "movement": 1,
     "attack": "amount",
@@ -7,6 +9,8 @@
   },
 
   "troll": {
+    "type": "troll",
+    "priority": 2,
     "name": "Troll",
     "movement": 1,
     "attack": 10,
@@ -14,6 +18,8 @@
   },
 
   "dragon": {
+    "type": "dragon",
+    "priority": 3,
     "name": "Dragon",
     "movement": 1,
     "attack": 20,
