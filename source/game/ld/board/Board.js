@@ -8,7 +8,7 @@ import * as actions from 'ld/board/actions'
 var ID = 0
 
 export default class Board {
-  constructor(data) {
+  constructor(data, width, height) {
     this._data = data
 
     this._tiles = null
@@ -18,6 +18,8 @@ export default class Board {
     this._inventory = null
     this._actions = {}
     this._goals = null
+    this._width = width
+    this._height = height
     
     for (let k in actions) {
       this._actions[k] = new actions[k](this)
@@ -29,6 +31,7 @@ export default class Board {
   get pawns() { return this._pawns }
   get inventory() { return this._inventory }
   get enemies() { return this._enemies }
+  get goals() { return this._goals }
 
   /**
    * Game initialization 
@@ -93,6 +96,22 @@ export default class Board {
     }
 
     return neighboors
+  }
+
+  positionToCoord(x, y) {
+
+  }
+
+  coordToPosition(q, r, center) {
+    let x = q*this._width + (r&1)*this._width/2
+    let y = r*this._height*.75
+
+    if (center) {
+      x += this._width/2
+      y += this._height/2
+    }
+
+    return new PIXI.Point(x, y)
   }
 
 

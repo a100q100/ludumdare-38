@@ -22,7 +22,7 @@ export let config = {
     forceOrientation    : null,
     scaleMode           : 'noscale',
     fullscreenScaleMode : 'noscale',
-    backgroundColor     : '#1D97F9',
+    backgroundColor     : '#C3DFD8',
     resolution          : 1,
     antialias           : false,
     transparent         : false, 

@@ -2,7 +2,7 @@
 
 {
 	"filename": "avatar_dwarf_warrior.png",
-	"frame": {"x":0,"y":87,"w":88,"h":87},
+	"frame": {"x":88,"y":60,"w":88,"h":87},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":87},
@@ -11,7 +11,7 @@
 },
 {
 	"filename": "avatar_elf_mage.png",
-	"frame": {"x":176,"y":87,"w":88,"h":88},
+	"frame": {"x":352,"y":60,"w":88,"h":88},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":88},
@@ -20,7 +20,7 @@
 },
 {
 	"filename": "avatar_elf_ranger.png",
-	"frame": {"x":835,"y":0,"w":88,"h":87},
+	"frame": {"x":0,"y":60,"w":88,"h":87},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":87},
@@ -29,7 +29,7 @@
 },
 {
 	"filename": "avatar_human_mage.png",
-	"frame": {"x":88,"y":87,"w":88,"h":88},
+	"frame": {"x":176,"y":60,"w":88,"h":88},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":88},
@@ -38,7 +38,7 @@
 },
 {
 	"filename": "avatar_human_warrior.png",
-	"frame": {"x":264,"y":87,"w":88,"h":88},
+	"frame": {"x":264,"y":60,"w":88,"h":88},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":88},
@@ -46,26 +46,17 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "background_2.png",
-	"frame": {"x":159,"y":220,"w":801,"h":600},
+	"filename": "background.png",
+	"frame": {"x":0,"y":313,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":801,"h":600},
-	"sourceSize": {"w":801,"h":600},
-	"pivot": {"x":0.5,"y":0.5}
-},
-{
-	"filename": "Grass Tile.png",
-	"frame": {"x":615,"y":87,"w":88,"h":101},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":101},
-	"sourceSize": {"w":88,"h":101},
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "hero_dwarf_warrior.png",
-	"frame": {"x":703,"y":87,"w":97,"h":109},
+	"frame": {"x":784,"y":60,"w":97,"h":109},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":109},
@@ -74,7 +65,7 @@
 },
 {
 	"filename": "hero_elf_mage.png",
-	"frame": {"x":800,"y":87,"w":95,"h":121},
+	"frame": {"x":0,"y":169,"w":95,"h":121},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":121},
@@ -83,7 +74,7 @@
 },
 {
 	"filename": "hero_elf_ranger.png",
-	"frame": {"x":895,"y":87,"w":107,"h":133},
+	"frame": {"x":95,"y":169,"w":107,"h":133},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":107,"h":133},
@@ -92,7 +83,7 @@
 },
 {
 	"filename": "hero_human_mage.png",
-	"frame": {"x":0,"y":220,"w":85,"h":135},
+	"frame": {"x":202,"y":169,"w":85,"h":135},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":85,"h":135},
@@ -101,7 +92,7 @@
 },
 {
 	"filename": "hero_human_warrior.png",
-	"frame": {"x":85,"y":220,"w":74,"h":144},
+	"frame": {"x":287,"y":169,"w":74,"h":144},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":144},
@@ -110,7 +101,7 @@
 },
 {
 	"filename": "icon_attack.png",
-	"frame": {"x":99,"y":0,"w":38,"h":38},
+	"frame": {"x":419,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -119,7 +110,7 @@
 },
 {
 	"filename": "icon_cancel.png",
-	"frame": {"x":137,"y":0,"w":38,"h":38},
+	"frame": {"x":23,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -128,7 +119,7 @@
 },
 {
 	"filename": "icon_dwarf_warrior.png",
-	"frame": {"x":665,"y":0,"w":52,"h":52},
+	"frame": {"x":599,"y":0,"w":52,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":52},
@@ -137,7 +128,7 @@
 },
 {
 	"filename": "icon_elf_mage.png",
-	"frame": {"x":613,"y":0,"w":52,"h":52},
+	"frame": {"x":703,"y":0,"w":52,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":52},
@@ -146,7 +137,7 @@
 },
 {
 	"filename": "icon_elf_ranger.png",
-	"frame": {"x":509,"y":0,"w":52,"h":52},
+	"frame": {"x":651,"y":0,"w":52,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":52},
@@ -154,8 +145,17 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
+	"filename": "icon_help.png",
+	"frame": {"x":99,"y":0,"w":38,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
+	"sourceSize": {"w":38,"h":38},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "icon_human_mage.png",
-	"frame": {"x":457,"y":0,"w":52,"h":52},
+	"frame": {"x":547,"y":0,"w":52,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":52},
@@ -164,7 +164,7 @@
 },
 {
 	"filename": "icon_human_warrior.png",
-	"frame": {"x":561,"y":0,"w":52,"h":52},
+	"frame": {"x":495,"y":0,"w":52,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":52},
@@ -173,7 +173,7 @@
 },
 {
 	"filename": "icon_movement.png",
-	"frame": {"x":175,"y":0,"w":38,"h":38},
+	"frame": {"x":381,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -182,7 +182,7 @@
 },
 {
 	"filename": "icon_pickup.png",
-	"frame": {"x":61,"y":0,"w":38,"h":38},
+	"frame": {"x":137,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -191,7 +191,7 @@
 },
 {
 	"filename": "icon_wait.png",
-	"frame": {"x":0,"y":0,"w":38,"h":38},
+	"frame": {"x":61,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -199,8 +199,17 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
+	"filename": "menu_background.png",
+	"frame": {"x":800,"y":313,"w":95,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":600},
+	"sourceSize": {"w":95,"h":600},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
 	"filename": "pawn_dwarf_warrior.png",
-	"frame": {"x":213,"y":0,"w":23,"h":38},
+	"frame": {"x":0,"y":0,"w":23,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
@@ -209,7 +218,7 @@
 },
 {
 	"filename": "pawn_elf_mage.png",
-	"frame": {"x":38,"y":0,"w":23,"h":38},
+	"frame": {"x":175,"y":0,"w":23,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
@@ -218,7 +227,7 @@
 },
 {
 	"filename": "pawn_elf_ranger.png",
-	"frame": {"x":312,"y":0,"w":23,"h":38},
+	"frame": {"x":236,"y":0,"w":23,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
@@ -227,7 +236,7 @@
 },
 {
 	"filename": "pawn_human_mage.png",
-	"frame": {"x":411,"y":0,"w":23,"h":38},
+	"frame": {"x":320,"y":0,"w":23,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
@@ -236,7 +245,7 @@
 },
 {
 	"filename": "pawn_human_warrior.png",
-	"frame": {"x":434,"y":0,"w":23,"h":38},
+	"frame": {"x":297,"y":0,"w":23,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
@@ -245,34 +254,43 @@
 },
 {
 	"filename": "tile_forest.png",
-	"frame": {"x":527,"y":87,"w":88,"h":101},
+	"frame": {"x":612,"y":60,"w":86,"h":101},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":101},
-	"sourceSize": {"w":88,"h":101},
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":101},
+	"sourceSize": {"w":86,"h":101},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "tile_grass.png",
+	"frame": {"x":698,"y":60,"w":86,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":101},
+	"sourceSize": {"w":86,"h":101},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "tile_mountain.png",
-	"frame": {"x":352,"y":87,"w":87,"h":101},
+	"frame": {"x":440,"y":60,"w":86,"h":101},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":87,"h":101},
-	"sourceSize": {"w":87,"h":101},
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":101},
+	"sourceSize": {"w":86,"h":101},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "tile_water.png",
-	"frame": {"x":439,"y":87,"w":88,"h":101},
+	"frame": {"x":526,"y":60,"w":86,"h":101},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":88,"h":101},
-	"sourceSize": {"w":88,"h":101},
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":101},
+	"sourceSize": {"w":86,"h":101},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "token_dragon.png",
-	"frame": {"x":373,"y":0,"w":38,"h":38},
+	"frame": {"x":343,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -281,7 +299,7 @@
 },
 {
 	"filename": "token_fort.png",
-	"frame": {"x":776,"y":0,"w":59,"h":60},
+	"frame": {"x":755,"y":0,"w":59,"h":60},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":60},
@@ -290,7 +308,7 @@
 },
 {
 	"filename": "token_goblin.png",
-	"frame": {"x":335,"y":0,"w":38,"h":38},
+	"frame": {"x":259,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -299,7 +317,7 @@
 },
 {
 	"filename": "token_item.png",
-	"frame": {"x":274,"y":0,"w":38,"h":38},
+	"frame": {"x":198,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -308,7 +326,7 @@
 },
 {
 	"filename": "token_spawn.png",
-	"frame": {"x":717,"y":0,"w":59,"h":60},
+	"frame": {"x":814,"y":0,"w":59,"h":60},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":59,"h":60},
@@ -317,7 +335,7 @@
 },
 {
 	"filename": "token_troll.png",
-	"frame": {"x":236,"y":0,"w":38,"h":38},
+	"frame": {"x":457,"y":0,"w":38,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":38},
@@ -329,8 +347,8 @@
 	"version": "1.0",
 	"image": "textures.png",
 	"format": "RGBA8888",
-	"size": {"w":1002,"h":820},
+	"size": {"w":895,"h":913},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b7c68130e0c66cea4170bc4d694d06ff:8581fd254a8b0fcc0ccabf697958c36e:cf827d152df04949dfee256cd0c8efd8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:557f7dd753f229172c5571f9a4f6b132:8c6e22a88a859c880ef367983c9e6025:cf827d152df04949dfee256cd0c8efd8$"
 }
 }

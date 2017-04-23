@@ -1,7 +1,7 @@
 {
   "plain": {
     "type": "plain",
-    "image": "tile_plain",
+    "image": "tile_grass",
     "restrict": false,
     "movementCost": 1
   },

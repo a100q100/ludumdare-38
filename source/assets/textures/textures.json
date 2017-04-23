@@ -9,8 +9,8 @@
       "rect": {
         "height": 87,
         "width": 88,
-        "x": 0,
-        "y": 87
+        "x": 88,
+        "y": 60
       },
       "rotated": false
     },
@@ -23,8 +23,8 @@
       "rect": {
         "height": 88,
         "width": 88,
-        "x": 176,
-        "y": 87
+        "x": 352,
+        "y": 60
       },
       "rotated": false
     },
@@ -37,8 +37,8 @@
       "rect": {
         "height": 87,
         "width": 88,
-        "x": 835,
-        "y": 0
+        "x": 0,
+        "y": 60
       },
       "rotated": false
     },
@@ -51,8 +51,8 @@
       "rect": {
         "height": 88,
         "width": 88,
-        "x": 88,
-        "y": 87
+        "x": 176,
+        "y": 60
       },
       "rotated": false
     },
@@ -66,7 +66,7 @@
         "height": 88,
         "width": 88,
         "x": 264,
-        "y": 87
+        "y": 60
       },
       "rotated": false
     },
@@ -75,26 +75,12 @@
         "x": 0.5,
         "y": 0.5
       },
-      "id": "background_2",
+      "id": "background",
       "rect": {
         "height": 600,
-        "width": 801,
-        "x": 159,
-        "y": 220
-      },
-      "rotated": false
-    },
-    {
-      "anchor": {
-        "x": 0.5,
-        "y": 0.5
-      },
-      "id": "Grass Tile",
-      "rect": {
-        "height": 101,
-        "width": 88,
-        "x": 615,
-        "y": 87
+        "width": 800,
+        "x": 0,
+        "y": 313
       },
       "rotated": false
     },
@@ -107,8 +93,8 @@
       "rect": {
         "height": 109,
         "width": 97,
-        "x": 703,
-        "y": 87
+        "x": 784,
+        "y": 60
       },
       "rotated": false
     },
@@ -121,8 +107,8 @@
       "rect": {
         "height": 121,
         "width": 95,
-        "x": 800,
-        "y": 87
+        "x": 0,
+        "y": 169
       },
       "rotated": false
     },
@@ -135,8 +121,8 @@
       "rect": {
         "height": 133,
         "width": 107,
-        "x": 895,
-        "y": 87
+        "x": 95,
+        "y": 169
       },
       "rotated": false
     },
@@ -149,8 +135,8 @@
       "rect": {
         "height": 135,
         "width": 85,
-        "x": 0,
-        "y": 220
+        "x": 202,
+        "y": 169
       },
       "rotated": false
     },
@@ -163,8 +149,8 @@
       "rect": {
         "height": 144,
         "width": 74,
-        "x": 85,
-        "y": 220
+        "x": 287,
+        "y": 169
       },
       "rotated": false
     },
@@ -177,7 +163,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 99,
+        "x": 419,
         "y": 0
       },
       "rotated": false
@@ -191,7 +177,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 137,
+        "x": 23,
         "y": 0
       },
       "rotated": false
@@ -205,7 +191,7 @@
       "rect": {
         "height": 52,
         "width": 52,
-        "x": 665,
+        "x": 599,
         "y": 0
       },
       "rotated": false
@@ -219,7 +205,7 @@
       "rect": {
         "height": 52,
         "width": 52,
-        "x": 613,
+        "x": 703,
         "y": 0
       },
       "rotated": false
@@ -233,7 +219,21 @@
       "rect": {
         "height": 52,
         "width": 52,
-        "x": 509,
+        "x": 651,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_help",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 99,
         "y": 0
       },
       "rotated": false
@@ -247,7 +247,7 @@
       "rect": {
         "height": 52,
         "width": 52,
-        "x": 457,
+        "x": 547,
         "y": 0
       },
       "rotated": false
@@ -261,7 +261,7 @@
       "rect": {
         "height": 52,
         "width": 52,
-        "x": 561,
+        "x": 495,
         "y": 0
       },
       "rotated": false
@@ -275,7 +275,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 175,
+        "x": 381,
         "y": 0
       },
       "rotated": false
@@ -289,7 +289,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 61,
+        "x": 137,
         "y": 0
       },
       "rotated": false
@@ -303,8 +303,22 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 0,
+        "x": 61,
         "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "menu_background",
+      "rect": {
+        "height": 600,
+        "width": 95,
+        "x": 800,
+        "y": 313
       },
       "rotated": false
     },
@@ -317,7 +331,7 @@
       "rect": {
         "height": 38,
         "width": 23,
-        "x": 213,
+        "x": 0,
         "y": 0
       },
       "rotated": false
@@ -331,7 +345,7 @@
       "rect": {
         "height": 38,
         "width": 23,
-        "x": 38,
+        "x": 175,
         "y": 0
       },
       "rotated": false
@@ -345,7 +359,7 @@
       "rect": {
         "height": 38,
         "width": 23,
-        "x": 312,
+        "x": 236,
         "y": 0
       },
       "rotated": false
@@ -359,7 +373,7 @@
       "rect": {
         "height": 38,
         "width": 23,
-        "x": 411,
+        "x": 320,
         "y": 0
       },
       "rotated": false
@@ -373,7 +387,7 @@
       "rect": {
         "height": 38,
         "width": 23,
-        "x": 434,
+        "x": 297,
         "y": 0
       },
       "rotated": false
@@ -386,9 +400,23 @@
       "id": "tile_forest",
       "rect": {
         "height": 101,
-        "width": 88,
-        "x": 527,
-        "y": 87
+        "width": 86,
+        "x": 612,
+        "y": 60
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "tile_grass",
+      "rect": {
+        "height": 101,
+        "width": 86,
+        "x": 698,
+        "y": 60
       },
       "rotated": false
     },
@@ -400,9 +428,9 @@
       "id": "tile_mountain",
       "rect": {
         "height": 101,
-        "width": 87,
-        "x": 352,
-        "y": 87
+        "width": 86,
+        "x": 440,
+        "y": 60
       },
       "rotated": false
     },
@@ -414,9 +442,9 @@
       "id": "tile_water",
       "rect": {
         "height": 101,
-        "width": 88,
-        "x": 439,
-        "y": 87
+        "width": 86,
+        "x": 526,
+        "y": 60
       },
       "rotated": false
     },
@@ -429,7 +457,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 373,
+        "x": 343,
         "y": 0
       },
       "rotated": false
@@ -443,7 +471,7 @@
       "rect": {
         "height": 60,
         "width": 59,
-        "x": 776,
+        "x": 755,
         "y": 0
       },
       "rotated": false
@@ -457,7 +485,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 335,
+        "x": 259,
         "y": 0
       },
       "rotated": false
@@ -471,7 +499,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 274,
+        "x": 198,
         "y": 0
       },
       "rotated": false
@@ -485,7 +513,7 @@
       "rect": {
         "height": 60,
         "width": 59,
-        "x": 717,
+        "x": 814,
         "y": 0
       },
       "rotated": false
@@ -499,7 +527,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 236,
+        "x": 457,
         "y": 0
       },
       "rotated": false

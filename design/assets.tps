@@ -199,22 +199,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">exported/Grass Tile.png</key>
-            <key type="filename">exported/tile_forest.png</key>
-            <key type="filename">exported/tile_mountain.png</key>
-            <key type="filename">exported/tile_water.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>22,25,44,51</rect>
-                <key>scale9Paddings</key>
-                <rect>22,25,44,51</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">exported/avatar_dwarf_warrior.png</key>
             <key type="filename">exported/avatar_elf_mage.png</key>
             <key type="filename">exported/avatar_elf_ranger.png</key>
@@ -232,7 +216,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">exported/background_2.png</key>
+            <key type="filename">exported/background.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -312,6 +296,7 @@
             </struct>
             <key type="filename">exported/icon_attack.png</key>
             <key type="filename">exported/icon_cancel.png</key>
+            <key type="filename">exported/icon_help.png</key>
             <key type="filename">exported/icon_movement.png</key>
             <key type="filename">exported/icon_pickup.png</key>
             <key type="filename">exported/icon_wait.png</key>
@@ -348,6 +333,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">exported/menu_background.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,150,48,300</rect>
+                <key>scale9Paddings</key>
+                <rect>24,150,48,300</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">exported/pawn_dwarf_warrior.png</key>
             <key type="filename">exported/pawn_elf_mage.png</key>
             <key type="filename">exported/pawn_elf_ranger.png</key>
@@ -362,6 +360,22 @@
                 <rect>6,10,12,19</rect>
                 <key>scale9Paddings</key>
                 <rect>6,10,12,19</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">exported/tile_forest.png</key>
+            <key type="filename">exported/tile_grass.png</key>
+            <key type="filename">exported/tile_mountain.png</key>
+            <key type="filename">exported/tile_water.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,25,44,51</rect>
+                <key>scale9Paddings</key>
+                <rect>22,25,44,51</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -387,8 +401,6 @@
             <filename>exported/avatar_elf_ranger.png</filename>
             <filename>exported/avatar_human_mage.png</filename>
             <filename>exported/avatar_human_warrior.png</filename>
-            <filename>exported/background_2.png</filename>
-            <filename>exported/Grass Tile.png</filename>
             <filename>exported/hero_dwarf_warrior.png</filename>
             <filename>exported/hero_elf_mage.png</filename>
             <filename>exported/hero_elf_ranger.png</filename>
@@ -418,6 +430,10 @@
             <filename>exported/token_spawn.png</filename>
             <filename>exported/token_troll.png</filename>
             <filename>exported/icon_cancel.png</filename>
+            <filename>exported/tile_grass.png</filename>
+            <filename>exported/background.png</filename>
+            <filename>exported/menu_background.png</filename>
+            <filename>exported/icon_help.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

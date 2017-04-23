@@ -2,8 +2,12 @@ export default class Pawn {
   constructor(id, data, coord) {
     this.id = id
     this.type = data.type
+    this.image = data.image
+    this.icon = data.icon
+    this.avatar = data.avatar
     this.name = data.name
     this.title = data.title
+    this.pawn = data.pawn
     this.totalActions = 2
     this.totalExtraAction = data.extraAction
     this.movementMods = sk.utils.deepCopy(data.movementMods)

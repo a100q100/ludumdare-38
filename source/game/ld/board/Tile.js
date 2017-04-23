@@ -5,6 +5,7 @@ export default class Tile {
     this.type = data.type
     this.restrict = data.restrict
     this.movementCost = data.movementCost
+    this.image = data.image
     this.coord = coord
 
     this.pawns = []
