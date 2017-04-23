@@ -22,7 +22,7 @@ game.addEventListener('resourcecomplete', function() {
 
   board.loadMap(
     game.resources.get('map_01'),
-    ['dwarf_warrior', 'elf_ranger', 'human_mage']
+    ['human_warrior', 'human_mage']
   )
 
   game.scenes.play('level', new sk.transitions.FadeInOut(500))

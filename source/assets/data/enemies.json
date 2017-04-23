@@ -1,6 +1,7 @@
 {
   "goblin": {
     "type": "goblin",
+    "image": "token_goblin",
     "priority": 1,
     "name": "Goblin",
     "movement": 1,
@@ -10,6 +11,7 @@
 
   "troll": {
     "type": "troll",
+    "image": "token_troll",
     "priority": 2,
     "name": "Troll",
     "movement": 1,
@@ -19,6 +21,7 @@
 
   "dragon": {
     "type": "dragon",
+    "image": "token_dragon",
     "priority": 3,
     "name": "Dragon",
     "movement": 1,

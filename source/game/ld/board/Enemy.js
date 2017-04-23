@@ -5,6 +5,7 @@ export default class Enemy {
     this.name = data.name
     this.movement = data.movement
     this._attack = data.attack
+    this.image = data.image
     this.defense = data.defense
     this.priority = data.priority
     this.amount = amount

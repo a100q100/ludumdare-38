@@ -24,7 +24,7 @@ export let config = {
     fullscreenScaleMode : 'noscale',
     backgroundColor     : '#C3DFD8',
     resolution          : 1,
-    antialias           : false,
+    antialias           : true,
     transparent         : false, 
     forceFXAA           : false,
     roundPixels         : false,

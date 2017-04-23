@@ -43,6 +43,8 @@ sk.system({
 
   methods: {
     enter: function(entity) {
+      if (!entity.display.alpha) return
+
       if (entity.$hoverJob) entity.$hoverJob.finish()
 
       entity.$hoverJob = this.scene.job(
@@ -52,13 +54,14 @@ sk.system({
           entity.display.scale.x = entity.display.scale.y = 1 + ease(th)*0.1
           entity.display.alpha = 1-ease(th)*0.1
         },
-        function() {
+        function() {  
           entity.display.scale = {x: 1.1, y: 1.1}
           entity.display.alpha = 0.9
         }
       )
     },
     leave: function(entity) {
+      if (!entity.display.alpha) return
       if (entity.$hoverJob) entity.$hoverJob.finish()
 
       entity.$hoverJob = this.scene.job(

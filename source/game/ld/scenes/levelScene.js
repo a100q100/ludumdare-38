@@ -6,6 +6,8 @@ sk.scene({
     'background',
     'map',
     'tokens',
+    'enemies',
+    'pawns',
     'overlay',
     'hud'
   ],
@@ -17,6 +19,69 @@ sk.scene({
   ],
   initialize: function() {
     this._jobs = []
+    this._places = {}
+
+    // Methods
+    this.job = function(duration, updateFn, completeFn, delay) {
+      let job = new Job(this, duration, updateFn, completeFn, delay)
+      this._jobs.push(job)
+      return job
+    }
+
+    this.put = function(entity, coord) {
+      if (!this._places[coord]) {
+        this._places[coord] = {
+          0: null,
+          1: null,
+          2: null,
+          3: null,
+          4: null,
+          5: null,
+          6: null,
+        }
+      }
+      let places = this._places[coord]
+
+      let empty = -1
+      for (let i in places) {
+        if (places[i] === null) {
+          empty = i
+          break
+        }
+      }
+
+      places[empty] = entity
+      let position = board.coordToPosition(coord[0], coord[1], true)
+
+      let x = position.x
+      let y = position.y
+      let w = board._width
+      let h = board._height
+      let rx = Math.random()*6 -3
+      let ry = Math.random()*6 -3
+
+      if (empty == 0) return new PIXI.Point(x-w/6+rx, y-h/6+ry)
+      if (empty == 1) return new PIXI.Point(x+w/6+rx, y+h/6+ry)
+      if (empty == 2) return new PIXI.Point(x    +rx, y+h/4+ry)
+      if (empty == 3) return new PIXI.Point(x    +rx, y-h/4+ry)
+      if (empty == 4) return new PIXI.Point(x    +rx, y    +ry)
+      if (empty == 5) return new PIXI.Point(x+w/6+rx, y-h/6+ry)
+      if (empty == 6) return new PIXI.Point(x-w/6+rx, y+h/6+ry)
+    }
+
+    this.take = function(entity, coord) {
+      if (!this._places[coord]) return
+      let places = this._places[coord]
+      for (let i in places) {
+        if (places[i] === entity) {
+          places[i] = null
+          return
+        }
+      }
+    }
+
+
+
 
     // Creating
     {
@@ -36,12 +101,12 @@ sk.scene({
 
       this._targets = this.addEntity('targets', 'overlay')
 
-      this.layers['map'].x = -100
-      this.layers['map'].y = -100
-      this.layers['tokens'].x = -100
-      this.layers['tokens'].y = -100
-      this.layers['overlay'].x = -100
-      this.layers['overlay'].y = -100
+      let offset = {x:-100, y:-100}
+      this.layers['map'].position = offset
+      this.layers['tokens'].position = offset
+      this.layers['enemies'].position = offset
+      this.layers['pawns'].position = offset
+      this.layers['overlay'].position = offset
 
 
       // Map elements
@@ -79,11 +144,11 @@ sk.scene({
       this._pawns = {}
       for (let k in board.pawns) {
         let pawn = board.pawns[k]
-        let sprite = this.addEntity('pawn', 'tokens')
+        let sprite = this.addEntity('pawn', 'pawns')
         sprite.display.anchor = {x:.5, y:.5}
         sprite.display.texture = game.resources.get(pawn.pawn)
 
-        let position = board.coordToPosition(pawn.coord[0], pawn.coord[1], true)
+        let position = this.put(sprite, pawn.coord)
         sprite.display.position = {
           x: position.x + Math.random()*40-20,
           y: position.y + Math.random()*40-20
@@ -91,6 +156,8 @@ sk.scene({
 
         this._pawns[k] = sprite
       }
+
+      this._enemies = {}
 
       // HUD
       let y = 40
@@ -130,12 +197,6 @@ sk.scene({
       }
     }
 
-    // Methods
-    this.job = function(duration, updateFn, completeFn, delay) {
-      let job = new Job(this, duration, updateFn, completeFn, delay)
-      this._jobs.push(job)
-      return job
-    }
   },
 
   update: function(delta) {
@@ -148,6 +209,7 @@ sk.scene({
   start: function() {
     this.eventSheets.level.startPlayerTurn()
   }
+
 
 })
 

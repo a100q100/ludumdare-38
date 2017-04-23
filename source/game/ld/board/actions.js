@@ -159,7 +159,8 @@ export class attack {
     log.push({
       type   : 'pawn.attack',
       target : target,
-      damage : attack
+      damage : attack,
+      pawn   : pawn
     })
 
     for (let i=0; i<enemies.length; i++) {

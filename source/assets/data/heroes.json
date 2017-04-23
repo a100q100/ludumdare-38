@@ -34,12 +34,12 @@
     "defense": 2,
     "range": 1
   },
-  "human_defender": {
-    "type": "human_defender",
-    "image": "human_defender",
-    "icon": "icon_human_defender",
-    "avatar": "avatar_human_defender",
-    "pawn": "pawn_human_defender",
+  "human_warrior": {
+    "type": "human_warrior",
+    "image": "human_warrior",
+    "icon": "icon_human_warrior",
+    "avatar": "avatar_human_warrior",
+    "pawn": "pawn_human_warrior",
     "name": "Marieta Greta",
     "title": "Human Defender",
     "actions": 2,

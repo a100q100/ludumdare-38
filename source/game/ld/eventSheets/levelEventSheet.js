@@ -44,6 +44,7 @@ sk.eventSheet({
         let targets = board.getTargets(pawnId, action)
 
         if (targets === true) {
+          this.clearActions()
           let log = board.act(pawnId, action)
           this.digestLog(log)
         } else {
@@ -107,14 +108,14 @@ sk.eventSheet({
             button.display.x = x
             x += button.display.width + 5
             
-            button.$hoverJob = this.scene.job(1000, function(th) {
+            button.$hoverJob = this.scene.job(500, function(th) {
               let e = sk.utils.easing
-              button.display.alpha = e.cubicInOut(th)
+              button.display.alpha = e.cubicOut(th)
             }, function() {
               button.display.alpha = 1
             }, delay)
 
-            delay += 100
+            delay += 50
           }
           
         }
@@ -161,6 +162,7 @@ sk.eventSheet({
         }
 
         let item = stack.shift()
+        console.log('processing', item)
         if (item.type === 'pawn.movement') this.digestPawnMovement(item, next)
         else if (item.type === 'pawn.attack') this.digestPawnAttack(item, next)
         else if (item.type === 'pawn.defense') this.digestPawnDefense(item, next)
@@ -186,6 +188,36 @@ sk.eventSheet({
       let id = item.pawn.id
       let pawn = this.scene._pawns[id]
       let position = board.coordToPosition(item.to[0], item.to[1], true)
+
+      this.scene.take(pawn, item.from)
+      let target = this.scene.put(pawn, item.to)
+      
+      let diff = {
+        x: target.x - pawn.display.x,
+        y: target.y - pawn.display.y
+      }
+      let initial = {
+        x: pawn.display.x,
+        y: pawn.display.y
+      }
+      
+      this.scene.job(600, 
+        function update(th) {
+          th = sk.utils.easing.cubicInOut(th)
+          pawn.display.x = initial.x + th*diff.x
+          pawn.display.y = initial.y + th*diff.y
+        }, 
+        function complete() {
+          pawn.display.x = target.x
+          pawn.display.y = target.y
+          next()
+        }
+      )
+    },
+    digestPawnAttack: function(item, next) { 
+      let id = item.pawn.id
+      let pawn = this.scene._pawns[id]
+      let position = board.coordToPosition(item.target[0], item.target[1], true)
       let target = {
         x: position.x + Math.random()*40 -20,
         y: position.y + Math.random()*40 -20
@@ -199,10 +231,30 @@ sk.eventSheet({
         y: pawn.display.y
       }
       
+      let going = true
       this.scene.job(1000, 
         function update(th) {
-          pawn.display.x = initial.x + sk.utils.easing.cubicIn(th)*diff.x
-          pawn.display.y = initial.y + sk.utils.easing.elasticOut(th)*diff.y
+          if (th < 0.5) {
+            th = sk.utils.easing.cubicInOut(th*2)
+
+            pawn.display.x = initial.x + th*diff.x
+            pawn.display.y = initial.y + th*diff.y
+          } else {
+            th = sk.utils.easing.cubicInOut((th-0.5)*2)
+
+            if (going) {
+              going = false
+              target = initial
+              initial = {x: pawn.display.x, y: pawn.display.y}
+              diff = {
+                x: target.x - pawn.display.x,
+                y: target.y - pawn.display.y
+              }
+            }
+            pawn.display.x = initial.x + th*diff.x
+            pawn.display.y = initial.y + th*diff.y
+          }
+
         }, 
         function complete() {
           pawn.display.x = target.x
@@ -211,7 +263,6 @@ sk.eventSheet({
         }
       )
     },
-    digestPawnAttack: function(item, next) { next() },
     digestPawnDefense: function(item, next) { next() },
     digestPawnKilled: function(item, next) { next() },
     digestPawnPickup: function(item, next) { next() },
@@ -233,7 +284,35 @@ sk.eventSheet({
     digestEnemyKilled: function(item, next) { next() },
     digestEnemyMovement: function(item, next) { next() },
     digestEnemyAttack: function(item, next) { next() },
-    digestEnemySpawn: function(item, next) { next() },
+    digestEnemySpawn: function(item, next) {
+      let id = item.enemy.id
+      let enemy = this.scene.addEntity('enemy', 'enemies')
+      let target = this.scene.put(enemy, item.target)
+
+      enemy.sprite.texture = game.resources.get(item.enemy.image)
+      enemy.text.text = item.enemy.amount
+      enemy.display.position = target
+      enemy.display.scale.x = 0.3
+      enemy.display.scale.y = 0.3
+      enemy.display.alpha = 0
+            
+      this.scene._enemies[id] = enemy
+      
+      this.scene.job(300, 
+        function update(th) {
+          th = sk.utils.easing.elasticOut(th)
+          enemy.display.alpha = th
+          enemy.display.scale.x = 0.3 + th*0.7
+          enemy.display.scale.y = 0.3 + th*0.7
+        }, 
+        function complete() {
+          enemy.display.alpha = 1
+          enemy.display.scale.x = 1
+          enemy.display.scale.y = 1
+          next()
+        }
+      )
+    },
     digestEnemyDamaged: function(item, next) { next() },
     digestGameVictory: function(item, next) { next() },
     digestGameFailure: function(item, next) { next() },
