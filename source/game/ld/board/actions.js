@@ -56,8 +56,9 @@ export class movement {
     for (let i=0; i<neighboors.length; i++) {
       let coord = neighboors[i]
       let tile = this._board.tiles[coord]
-      let tileCost = tile.movementCost + pawn.movementMods[tile.type]||0
+      let tileCost = tile.movementCost + (pawn.movementMods[tile.type]||0)
 
+      console.log('COST', tile.type, tileCost, '/', strength, '(', tile.movementCost, pawn.movementMods[tile.type], ')')
       if (strength >= tileCost) {
         results.push(coord)
       }
@@ -76,7 +77,8 @@ export class movement {
     let latsCoord = pawn.coord
     pawn.coord = target
 
-    pawn.actions -= 1
+    let tileCost = targetTile.movementCost + (pawn.movementMods[targetTile.type]||0)
+    pawn.actions -= tileCost
 
     return [
       {

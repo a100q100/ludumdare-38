@@ -10,7 +10,7 @@
     "type": "forest",
     "image": "tile_forest",
     "restrict": false,
-    "movementCost": 1
+    "movementCost": 2
   },
 
   "mountain": {
