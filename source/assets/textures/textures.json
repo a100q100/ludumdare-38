@@ -1,0 +1,509 @@
+{
+  "frames": [
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "avatar_dwarf_warrior",
+      "rect": {
+        "height": 87,
+        "width": 88,
+        "x": 0,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "avatar_elf_mage",
+      "rect": {
+        "height": 88,
+        "width": 88,
+        "x": 176,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "avatar_elf_ranger",
+      "rect": {
+        "height": 87,
+        "width": 88,
+        "x": 835,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "avatar_human_mage",
+      "rect": {
+        "height": 88,
+        "width": 88,
+        "x": 88,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "avatar_human_warrior",
+      "rect": {
+        "height": 88,
+        "width": 88,
+        "x": 264,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "background_2",
+      "rect": {
+        "height": 600,
+        "width": 801,
+        "x": 159,
+        "y": 220
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "Grass Tile",
+      "rect": {
+        "height": 101,
+        "width": 88,
+        "x": 615,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "hero_dwarf_warrior",
+      "rect": {
+        "height": 109,
+        "width": 97,
+        "x": 703,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "hero_elf_mage",
+      "rect": {
+        "height": 121,
+        "width": 95,
+        "x": 800,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "hero_elf_ranger",
+      "rect": {
+        "height": 133,
+        "width": 107,
+        "x": 895,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "hero_human_mage",
+      "rect": {
+        "height": 135,
+        "width": 85,
+        "x": 0,
+        "y": 220
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "hero_human_warrior",
+      "rect": {
+        "height": 144,
+        "width": 74,
+        "x": 85,
+        "y": 220
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_attack",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 99,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_cancel",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 137,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_dwarf_warrior",
+      "rect": {
+        "height": 52,
+        "width": 52,
+        "x": 665,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_elf_mage",
+      "rect": {
+        "height": 52,
+        "width": 52,
+        "x": 613,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_elf_ranger",
+      "rect": {
+        "height": 52,
+        "width": 52,
+        "x": 509,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_human_mage",
+      "rect": {
+        "height": 52,
+        "width": 52,
+        "x": 457,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_human_warrior",
+      "rect": {
+        "height": 52,
+        "width": 52,
+        "x": 561,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_movement",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 175,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_pickup",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 61,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "icon_wait",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 0,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "pawn_dwarf_warrior",
+      "rect": {
+        "height": 38,
+        "width": 23,
+        "x": 213,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "pawn_elf_mage",
+      "rect": {
+        "height": 38,
+        "width": 23,
+        "x": 38,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "pawn_elf_ranger",
+      "rect": {
+        "height": 38,
+        "width": 23,
+        "x": 312,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "pawn_human_mage",
+      "rect": {
+        "height": 38,
+        "width": 23,
+        "x": 411,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "pawn_human_warrior",
+      "rect": {
+        "height": 38,
+        "width": 23,
+        "x": 434,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "tile_forest",
+      "rect": {
+        "height": 101,
+        "width": 88,
+        "x": 527,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "tile_mountain",
+      "rect": {
+        "height": 101,
+        "width": 87,
+        "x": 352,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "tile_water",
+      "rect": {
+        "height": 101,
+        "width": 88,
+        "x": 439,
+        "y": 87
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "token_dragon",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 373,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "token_fort",
+      "rect": {
+        "height": 60,
+        "width": 59,
+        "x": 776,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "token_goblin",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 335,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "token_item",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 274,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "token_spawn",
+      "rect": {
+        "height": 60,
+        "width": 59,
+        "x": 717,
+        "y": 0
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "token_troll",
+      "rect": {
+        "height": 38,
+        "width": 38,
+        "x": 236,
+        "y": 0
+      },
+      "rotated": false
+    }
+  ],
+  "image": "textures.png"
+}
