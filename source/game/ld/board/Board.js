@@ -17,6 +17,7 @@ export default class Board {
     this._spawnPoints = null
     this._inventory = null
     this._actions = {}
+    this._goals = null
     
     for (let k in actions) {
       this._actions[k] = new actions[k](this)
@@ -61,6 +62,17 @@ export default class Board {
       this._spawnPoints.push([point.q, point.r])
       this.tiles[[point.q, point.r]].addSpawnPoint(i)
     }
+
+    // Set goal pickups
+    for (let i=0; i<map.goals.length; i++) {
+      let goal = map.goals[i]
+
+      if (goal.type === 'pickup') {
+        this.tiles[[goal.coord.q, goal.coord.r]].addItem(goal.object)
+      }
+    }
+
+    this._goals = sk.utils.deepCopy(map.goals)
 
     // Reset session
     this._initializeGame()
@@ -114,6 +126,8 @@ export default class Board {
   }
 
   act(id, action, target) {
+    let log = []
+
     if (this._turn !== 'player') {
       throw new Error('trying to act out of the turn')
     }
@@ -131,11 +145,21 @@ export default class Board {
       throw new Error('trying to perform an action with an invalid target')
     }
 
-    action.perform(pawn, target)
+    log = log.concat(action.perform(pawn, target))
+
+    if (this._hasUserWin()) {
+      log.push({
+        type  : 'game.victory',
+        count : this._turnCount
+      })
+      return log
+    }
 
     if (this._isTurnEnded()) {
-      this._nextTurn()
+      log = log.concat(this._nextTurn())
     }
+
+    return log
   }
 
 
@@ -192,25 +216,63 @@ export default class Board {
 
     return true
   }
+  _hasUserWin() {
+    for (let i=0; i<this._goals.length; i++) {
+      let goal = this._goals[i]
+
+      if (goal.type === 'pickup' && this._inventory.indexOf(goal.object) < 0){
+        return false
+      }
+      else if (goal.type === 'movement') {
+        let tile = this.tiles[[goal.coord.q, goal.coord.r]]
+        if (!tile.pawns.length) {
+          return false
+        }
+      }
+    }
+
+    return true
+  }
+  _hasUserLose() {
+    return !Object.keys(this.pawns).length
+  }
 
   /**
    * Machine turn
    */
   _nextTurn() {
+    let log = []
+
     this._turn = 'machine'
+    log.push({
+      type  : 'game.machineturn',
+      count : this._turnCount
+    })
+
     for (let i=0; i<this.enemies.length; i++) {
       this.enemies[i].resetActions()
     }
     
-    this._spawn()
-    this._moveEnemies()
-    this._attackHeroes()
+    log = log.concat(this._spawn())
+    log = log.concat(this._moveEnemies())
+    log = log.concat(this._attackHeroes())
+
+    if (this._hasUserLose()) {
+      log.push({
+        type  : 'game.victory',
+        count : this._turnCount
+      })
+      return log
+    }
 
     this._initializePlayerTurn()
-
     this.report()
+
+    return log
   }
   _spawn() {
+    let log = []
+
     for (let i=0; i<this._spawnPoints.length; i++) {
       let spawn = this._spawnPoints[i]
 
@@ -222,14 +284,24 @@ export default class Board {
 
       this.tiles[spawn].addEnemy(enemy.id)
       this._enemies.push(enemy)
+
+      log.push({
+        type   : 'enemy.spawn',
+        target : spawn,
+        enemy  : enemy
+      })
       
       if (!this._spawnDeck.length) {
         console.log('reseting deck')
         this._spawnDeck = this._data.spawn[this._difficulty].slice()
       }
     }
+
+    return log
   }
   _moveEnemies() {
+    let log = []
+
     for (let i=0; i<this._enemies.length; i++) {
       let enemy = this._enemies[i]
 
@@ -259,14 +331,27 @@ export default class Board {
         let targetTile = this.tiles[target]
         let currentTile = this.tiles[enemy.coord]
 
+        let lastCoord = enemy.coord
         currentTile.removeEnemy(enemy.id)
         targetTile.addEnemy(enemy.id)
         enemy.coord = target
         enemy.actions -= 1
+
+        log.push({
+          type  : 'enemy.movement',
+          from  : lastCoord,
+          to    : enemy.coord,
+          enemy : enemy,
+          pawn  : minTarget
+        })
       }
     }
+
+    return log
   }
   _attackHeroes() {
+    let log = []
+
     let attacks = {}
 
     // Compute attacks from all enemies in the same tile
@@ -280,19 +365,34 @@ export default class Board {
 
       if (!attacks[enemy.coord]) attacks[enemy.coord] = 0
 
-      attacks[enemy.coord] += utils.dice(enemy.attack)
+      let attack = utils.dice(enemy.attack)
+      attacks[enemy.coord] += attack
+
+      log.push({
+        type   : 'enemy.attack',
+        target : enemy.coord,
+        damage : attack,
+        enemy  : enemy,
+        pawns  : tile.pawns.map(x => this._pawns[x])
+      })
     }
 
     // Compute the combat
     for (let coord in attacks) {
       let attack = attacks[coord]
 
-      console.log('Enemies attacking with', attack)
+      // console.log('Enemies attacking with', attack)
 
       let pawns = this.tiles[coord].pawns.map(x => this._pawns[x])
       let defense = pawns.reduce((v, x) => v+utils.dice(x.defense), 0)
 
-      console.log('Pawns defending with', defense)
+      log.push({
+        type    : 'pawn.defense',
+        damage  : attack,
+        defense : defense,
+        pawns   : pawns
+      })
+      // console.log('Pawns defending with', defense)
 
       if (attack > defense) {
         let dead = pawns[parseInt(Math.random()*pawns.length)]
@@ -300,12 +400,22 @@ export default class Board {
         let tile = this.tiles[dead.coord]
         tile.removePawn(dead.id)
 
+        let pawn = this.pawns[dead.id]
         delete this.pawns[dead.id]
-        console.log(dead.name, 'is dead')
+
+        log.push({
+          type    : 'pawn.killed',
+          damage  : attack,
+          defense : defense,
+          pawn    : pawn
+        })
+        // console.log(dead.name, 'is dead')
 
         if (!Object.keys(this._pawns).length) return
       }
     }
+
+    return log
   }
 
 
@@ -342,24 +452,43 @@ export default class Board {
         }
 
         if (tile.item) {
-          console.log(`- Item: ${tile.items[i]}`)
+          console.log(`- Item: ${tile.item}`)
         }
-
-        console.log(``)
       }
-
     }
     console.log(`===============================================`)
   }
 
   pass() {
+    let log = []
     let turn = this._turnCount
     for (let k in this.pawns) {
-      this.act(k, 'wait')
+      log = log.concat(this.act(k, 'wait'))
       if (turn !== this._turnCount) break
     }
+    return log
   }
 
+  printLog(log) {
+    console.log(``)
+    console.log(`LOG ==================================`)
+    for (let i=0; i<log.length; i++) {
+      let item = log[i]
+
+      let s = ''
+      
+      if (item.count) s += ` <turn:${item.count}>`
+      if (item.target) s += ` <coords:${item.target}>`
+      if (item.item) s += ` <item:${item.item}>`
+      if (item.damage) s += ` <damage:${item.damage}>`
+      if (item.defense) s += ` <defense:${item.defense}>`
+      if (item.pawn) s += ` <pawn:${item.pawn.name}>`
+      if (item.enemy) s += ` <enemy:${item.enemy.name}>`
+
+      console.log(`${item.type}:${s}`)
+    }
+    console.log(`===============================================`)
+  }
 
 }
 

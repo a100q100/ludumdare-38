@@ -73,9 +73,19 @@ export class movement {
     currentTile.removePawn(pawn.id)
     targetTile.addPawn(pawn.id)
 
+    let latsCoord = pawn.coord
     pawn.coord = target
 
     pawn.actions -= 1
+
+    return [
+      {
+        type : 'pawn.movement',
+        from : latsCoord,
+        to   : pawn.coord,
+        pawn : pawn
+      }
+    ]
   }
 }
 
@@ -139,10 +149,18 @@ export class attack {
   }
 
   perform(pawn, target) {
+    let log = []
+
     let enemies = this._board.getEnemies(target)
 
     let attack = utils.dice(pawn.attack)
     let deads = []
+
+    log.push({
+      type   : 'pawn.attack',
+      target : target,
+      damage : attack
+    })
 
     for (let i=0; i<enemies.length; i++) {
       // console.log('pawn attacking with', attack)
@@ -151,6 +169,13 @@ export class attack {
       // console.log(enemy.name, 'defending with', defense)
 
       let dead = attack - defense
+      log.push({
+        type    : 'enemy.defense',
+        defense : defense,
+        damage  : dead,
+        enemy   : enemy,
+        pawn    : pawn
+      })
 
       if (dead > 0) {
         let total = enemy.amount - dead
@@ -159,9 +184,26 @@ export class attack {
           deads.push(i)
           enemy.amount = total
           attack = Math.abs(total)
+
+          log.push({
+            type    : 'enemy.killed',
+            defense : defense,
+            damage  : dead,
+            enemy   : enemy,
+            pawn    : pawn
+          })
+
         } else {
           // console.log(enemy.name, 'had', enemy.amount, 'and now have', total)
           enemy.amount = total
+
+          log.push({
+            type    : 'enemy.damaged',
+            defense : defense,
+            damage  : dead,
+            enemy   : enemy,
+            pawn    : pawn
+          })
         }
       } 
     }
@@ -175,7 +217,10 @@ export class attack {
     }
 
     pawn.actions = 0
+
+    return log
   }
+
 }
 
 export class pickup {
@@ -206,6 +251,12 @@ export class pickup {
 
     this._board.inventory.push(item)
     pawn.actions -= 1
+
+    return [{
+      type : 'pawn.pickup',
+      item : item,
+      pawn : pawn
+    }]
   }
 }
 
@@ -224,5 +275,10 @@ export class wait {
 
   perform(pawn, target) {
     pawn.actions = 0
+
+    return [{
+      type : 'pawn.wait',
+      pawn : pawn
+    }]
   }
 }
