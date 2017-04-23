@@ -9,6 +9,7 @@ import * as buttonEntity from 'ld/entities/buttonEntity.js'
 import * as pawnEntity from 'ld/entities/pawnEntity.js'
 import * as tokenEntity from 'ld/entities/tokenEntity.js'
 import * as enemyEntity from 'ld/entities/enemyEntity.js'
+import * as targetsEntity from 'ld/entities/targetsEntity.js'
 
 import * as levelScene from 'ld/scenes/levelScene.js'
 import * as menuScene from 'ld/scenes/menuScene.js'

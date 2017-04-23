@@ -6,6 +6,7 @@ sk.scene({
     'background',
     'map',
     'tokens',
+    'overlay',
     'hud'
   ],
   systems: [
@@ -33,10 +34,15 @@ sk.scene({
       this._map = this.addEntity('map', 'map')
       this._map.loadMap()
 
+      this._targets = this.addEntity('targets', 'overlay')
+
       this.layers['map'].x = -100
       this.layers['map'].y = -100
       this.layers['tokens'].x = -100
       this.layers['tokens'].y = -100
+      this.layers['overlay'].x = -100
+      this.layers['overlay'].y = -100
+
 
       // Map elements
       //   spawn points

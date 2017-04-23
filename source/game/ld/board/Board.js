@@ -99,7 +99,26 @@ export default class Board {
   }
 
   positionToCoord(x, y) {
+    let h3_4 = this._height*3/4
+    let h_4 = this._height/4
+    let w = this._width
+    let w_2 = this._width/2
 
+    let R = Math.floor(y/h3_4)
+    let Q = Math.floor((x - (R&1)*w_2)/w)
+
+    let dY = y - R*h3_4
+    let dX = x - Q*w - (R&1)*w_2
+    let c = h_4
+    let m = c/w_2
+
+    if (dY < -m*dX + c) {
+      [Q, R] = utils.next([Q, R], 'NW')
+    } else if (dY < m*dX - c) {
+      [Q, R] = utils.next([Q, R], 'NE')
+    }
+
+    return {q:Q, r:R}
   }
 
   coordToPosition(q, r, center) {
@@ -142,6 +161,12 @@ export default class Board {
   getTargets(id, action) {
     let pawn = this.pawns[id]
     return this._actions[action].getTargets(pawn)
+  }
+
+  canAct(id, action, target) {
+    let pawn = this.pawns[id]
+    action = this._actions[action]
+    return action.canPerform(pawn, target)
   }
 
   act(id, action, target) {
