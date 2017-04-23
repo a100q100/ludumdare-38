@@ -2,6 +2,7 @@ export default class Enemy {
   constructor(id, data, coord, amount) {
     this.id = id
     this.coord = coord
+    this.type = data.type
     this.name = data.name
     this.movement = data.movement
     this._attack = data.attack

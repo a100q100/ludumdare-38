@@ -162,6 +162,8 @@ sk.eventSheet({
         }
 
         let item = stack.shift()
+        if (!item) return next()
+
         console.log('processing', item)
         if (item.type === 'pawn.movement') this.digestPawnMovement(item, next)
         else if (item.type === 'pawn.attack') this.digestPawnAttack(item, next)
@@ -175,6 +177,7 @@ sk.eventSheet({
         else if (item.type === 'enemy.attack') this.digestEnemyAttack(item, next)
         else if (item.type === 'enemy.spawn') this.digestEnemySpawn(item, next)
         else if (item.type === 'enemy.damaged') this.digestEnemyDamaged(item, next)
+        else if (item.type === 'enemy.merged') this.digestEnemyMerged(item, next)
         else if (item.type === 'game.victory') this.digestGameVictory(item, next)
         else if (item.type === 'game.failure') this.digestGameFailure(item, next)
         else if (item.type === 'game.machineturn') this.digestGameMachineturn(item, next)
@@ -191,7 +194,7 @@ sk.eventSheet({
 
       this.scene.take(pawn, item.from)
       let target = this.scene.put(pawn, item.to)
-      
+
       let diff = {
         x: target.x - pawn.display.x,
         y: target.y - pawn.display.y
@@ -263,9 +266,55 @@ sk.eventSheet({
         }
       )
     },
-    digestPawnDefense: function(item, next) { next() },
-    digestPawnKilled: function(item, next) { next() },
-    digestPawnPickup: function(item, next) { next() },
+    digestPawnDefense: function(item, next) { 
+      let id = item.pawns[parseInt(Math.random()*item.pawns.length)].id
+      let pawn = this.scene._pawns[id]
+      let x = pawn.display.x
+      
+      this.scene.job(300, 
+        function update(th) {
+          pawn.display.x = x + Math.sin(th*6*Math.PI)*5
+        }, 
+        function complete() {
+          pawn.display.x = x
+          next()
+        }
+      )
+    },
+    digestPawnKilled: function(item, next) {
+      let id = item.pawn.id
+      let pawn = this.scene._pawns[id]
+      this.scene.take(pawn, item.pawn.coord)
+      
+      let diff = 0xFFFFFF - 0xE24545
+      this.scene.job(1000, 
+        th => {
+          pawn.display.tint = 0xFFFFFF - diff*th
+          pawn.display.alpha = 1-sk.utils.easing.cubicInOut(th)
+        }, 
+        () => {
+          // this.scene.removeEntity(pawn, 'enemies')
+          next()
+        }
+      )
+    },
+    digestPawnPickup: function(item, next) {
+      let pawn = this.scene._pawns[item.pawn.id]
+      let pick = this.scene._items[item.item]
+      let y = pawn.display.y
+      this.scene.job(300, 
+        function update(th) {
+          th = sk.utils.easing.cubicInOut(th)
+          pick.display.alpha = 1-th
+          pawn.display.y = y + Math.sin(th*Math.PI)*7
+        }, 
+        function complete() {
+          pick.display.alpha = 0
+          pawn.display.y = y
+          next()
+        }
+      )
+    },
     digestPawnWait: function(item, next) { 
       let id = item.pawn.id
       let pawn = this.scene._pawns[id]
@@ -280,10 +329,118 @@ sk.eventSheet({
         }
       )
     },
-    digestEnemyDefense: function(item, next) { next() },
-    digestEnemyKilled: function(item, next) { next() },
-    digestEnemyMovement: function(item, next) { next() },
-    digestEnemyAttack: function(item, next) { next() },
+    digestEnemyDefense: function(item, next) { 
+      let id = item.enemy.id
+      let enemy = this.scene._enemies[id]
+      let x = enemy.display.x
+      
+      this.scene.job(300, 
+        function update(th) {
+          enemy.display.x = x + Math.sin(th*6*Math.PI)*5
+        }, 
+        function complete() {
+          enemy.display.x = x
+          enemy.text.text = item.enemy.amount
+          next()
+        }
+      )
+    },
+    digestEnemyKilled: function(item, next) { 
+      let id = item.enemy.id
+      let enemy = this.scene._enemies[id]
+      this.scene.take(enemy, item.enemy.coord)
+      
+      let diff = 0xFFFFFF - 0xE24545
+      this.scene.job(400, 
+        th => {
+          enemy.display.tint = 0xFFFFFF - diff*th
+          enemy.display.alpha = 1-sk.utils.easing.cubicInOut(th)
+        }, 
+        () => {
+          this.scene.removeEntity(enemy, 'enemies')
+          next()
+        }
+      )
+      
+    },
+    digestEnemyMovement: function(item, next) {
+      let id = item.enemy.id
+      let enemy = this.scene._enemies[id]
+
+      this.scene.take(enemy, item.from)
+      let target = this.scene.put(enemy, item.to)
+
+      let diff = {
+        x: target.x - enemy.display.x,
+        y: target.y - enemy.display.y
+      }
+      let initial = {
+        x: enemy.display.x,
+        y: enemy.display.y
+      }
+      
+      this.scene.job(600, 
+        function update(th) {
+          th = sk.utils.easing.cubicInOut(th)
+          enemy.display.x = initial.x + th*diff.x
+          enemy.display.y = initial.y + th*diff.y
+        }, 
+        function complete() {
+          enemy.display.x = target.x
+          enemy.display.y = target.y
+          next()
+        }
+      )
+    },
+    digestEnemyAttack: function(item, next) {
+      let id = item.enemy.id
+      let enemy = this.scene._enemies[id]
+      let position = board.coordToPosition(item.target[0], item.target[1], true)
+      let target = {
+        x: position.x + Math.random()*40 -20,
+        y: position.y + Math.random()*40 -20
+      }
+      let diff = {
+        x: target.x - enemy.display.x,
+        y: target.y - enemy.display.y
+      }
+      let initial = {
+        x: enemy.display.x,
+        y: enemy.display.y
+      }
+      
+      let going = true
+      this.scene.job(1000, 
+        function update(th) {
+          if (th < 0.5) {
+            th = sk.utils.easing.cubicInOut(th*2)
+
+            enemy.display.x = initial.x + th*diff.x
+            enemy.display.y = initial.y + th*diff.y
+          } else {
+            th = sk.utils.easing.cubicInOut((th-0.5)*2)
+
+            if (going) {
+              going = false
+              target = initial
+              initial = {x: enemy.display.x, y: enemy.display.y}
+              diff = {
+                x: target.x - enemy.display.x,
+                y: target.y - enemy.display.y
+              }
+            }
+            enemy.display.x = initial.x + th*diff.x
+            enemy.display.y = initial.y + th*diff.y
+          }
+
+        }, 
+        function complete() {
+          enemy.display.x = target.x
+          enemy.display.y = target.y
+          next()
+        }
+      )
+    },
     digestEnemySpawn: function(item, next) {
       let id = item.enemy.id
       let enemy = this.scene.addEntity('enemy', 'enemies')
@@ -313,9 +470,39 @@ sk.eventSheet({
         }
       )
     },
-    digestEnemyDamaged: function(item, next) { next() },
-    digestGameVictory: function(item, next) { next() },
-    digestGameFailure: function(item, next) { next() },
+    digestEnemyDamaged: function(item, next) { 
+      next()
+    },
+    digestEnemyMerged: function(item, next) {
+      let first = this.scene._enemies[item.first.id]
+      let second = this.scene._enemies[item.second.id]
+      second.text.text = item.second.amount
+      this.scene.take(first, item.first.coord)
+      this.scene.removeEntity(first, 'enemies')
+
+      this.scene.job(500, 
+        th => {
+          th = sk.utils.easing.cubicInOut(th)
+          let s = Math.abs(Math.sin(th*Math.PI))*0.3
+            
+          second.display.scale.x = 1 + s
+          second.display.scale.y = 1 + s
+        }, 
+        () => {
+          second.display.scale.x = 1
+          second.display.scale.y = 1
+          next()
+        }
+      )
+    },
+    digestGameVictory: function(item, next) { 
+      window.alert('Você Ganhou!')
+      next()
+    },
+    digestGameFailure: function(item, next) { 
+      window.alert('Você Perdeu =(!')
+      next()
+    },
     digestGameMachineturn: function(item, next) { next() },
     digestGamePlayerturn: function(item, next) { next() },
   }

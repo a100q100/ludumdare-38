@@ -34,7 +34,7 @@
   ],
 
   "goals": [
-    {"type":"pickup", "object":"crown", "coord":{"q":7, "r":2}},
+    {"type":"pickup", "object":"crown", "coord":{"q":4, "r":6}},
     {"type":"movement", "object":"fort", "coord":{"q":7, "r":7}}
   ]
 

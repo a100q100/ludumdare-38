@@ -209,7 +209,7 @@ export class attack {
       } 
     }
 
-    for (let i=0; i<deads.length; i++) {
+    for (let i=deads.length-1; i>=0; i--) {
       // console.log('removing enemy ', deads[i], 'from board')
       let enemy = this._board.enemies.splice(deads[i], 1)[0]
       let tile = this._board.tiles[enemy.coord]

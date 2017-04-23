@@ -60,13 +60,13 @@ sk.scene({
       let rx = Math.random()*6 -3
       let ry = Math.random()*6 -3
 
-      if (empty == 0) return new PIXI.Point(x-w/6+rx, y-h/6+ry)
+      if (empty == 0) return new PIXI.Point(x    +rx, y-h/4+ry)
       if (empty == 1) return new PIXI.Point(x+w/6+rx, y+h/6+ry)
-      if (empty == 2) return new PIXI.Point(x    +rx, y+h/4+ry)
-      if (empty == 3) return new PIXI.Point(x    +rx, y-h/4+ry)
+      if (empty == 2) return new PIXI.Point(x-w/6+rx, y+h/6+ry)
+      if (empty == 3) return new PIXI.Point(x-w/6+rx, y-h/6+ry)
       if (empty == 4) return new PIXI.Point(x    +rx, y    +ry)
       if (empty == 5) return new PIXI.Point(x+w/6+rx, y-h/6+ry)
-      if (empty == 6) return new PIXI.Point(x-w/6+rx, y+h/6+ry)
+      if (empty == 6) return new PIXI.Point(x    +rx, y+h/4+ry)
     }
 
     this.take = function(entity, coord) {
@@ -150,8 +150,8 @@ sk.scene({
 
         let position = this.put(sprite, pawn.coord)
         sprite.display.position = {
-          x: position.x + Math.random()*40-20,
-          y: position.y + Math.random()*40-20
+          x: position.x,
+          y: position.y
         }
 
         this._pawns[k] = sprite

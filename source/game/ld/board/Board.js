@@ -303,7 +303,7 @@ export default class Board {
 
     if (this._hasUserLose()) {
       log.push({
-        type  : 'game.victory',
+        type  : 'game.failure',
         count : this._turnCount
       })
       return log
@@ -343,6 +343,14 @@ export default class Board {
 
     return log
   }
+  _getEnemy(id) {
+    for (let i=0; i<this._enemies.length; i++) {
+      if (this._enemies[i].id === id) {
+        return this._enemies[i]
+      }
+    }
+  }
+
   _moveEnemies() {
     let log = []
 
@@ -388,6 +396,64 @@ export default class Board {
           enemy : enemy,
           pawn  : minTarget
         })
+      }
+
+      // Merge same type enemies
+      let merge = []
+      for (let t in this.tiles) {
+        let tile = this.tiles[t]
+
+        for (let i=tile.enemies.length-1; i>=0; i--) {
+          let first = this._getEnemy(tile.enemies[i])
+
+          for (let j=i-1; j>=0; j--) {
+            let second = this._getEnemy(tile.enemies[j])
+            console.log('comparing', first.id, 'to', second.id, '...')
+            if (first.type === second.type) {
+              merge.push([first, second, tile])
+              console.log('merge!')
+              break
+            }
+          }
+        }
+      }
+
+      for (let i=0; i<merge.length; i++) {
+        let from = merge[i][0]
+        let to = merge[i][1]
+        let tile = merge[i][2]
+        let amount = from.amount
+
+        console.log('merging', from.id, 'and', to.id, from.type, ':', amount)
+        console.log('previous tile:')
+        for (let z=0; z<tile.enemies.length; z++) {
+          console.log(tile.enemies[z])
+        }
+        console.log('previous board:')
+        for (let z=0; z<this.enemies.length; z++) {
+          console.log(this.enemies[z])
+        }
+
+        log.push({
+          type   : 'enemy.merged',
+          first  : from,
+          second : to,
+          amount : amount,
+          coord  : to.coord
+        })
+
+        to.amount += from.amount
+        tile.removeEnemy(from.id)
+        this.enemies.splice(this.enemies.indexOf(from), 1)
+
+        console.log('after tile:')
+        for (let z=0; z<tile.enemies.length; z++) {
+          console.log(tile.enemies[z])
+        }
+        console.log('after board:')
+        for (let z=0; z<this.enemies.length; z++) {
+          console.log(this.enemies[z])
+        }
       }
     }
 
@@ -455,7 +521,7 @@ export default class Board {
         })
         // console.log(dead.name, 'is dead')
 
-        if (!Object.keys(this._pawns).length) return
+        if (!Object.keys(this._pawns).length) return log
       }
     }
 
