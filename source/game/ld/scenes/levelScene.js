@@ -195,6 +195,15 @@ sk.scene({
 
         y += 10 + button.display.texture.height
       }
+
+      let helpButton = this.addEntity('button', 'hud')
+      helpButton.display.texture = game.resources.get('icon_help')
+      helpButton.display.anchor = {x:.5, y:.5}
+      helpButton.display.x = 35
+      helpButton.display.y = game.display.height-35
+      helpButton.addEventListener('buttonclick', () => {
+        window.openTutorial()
+      })
     }
 
   },
