@@ -25,5 +25,5 @@ game.addEventListener('resourcecomplete', function() {
     ['human_warrior', 'human_mage']
   )
 
-  game.scenes.play('level', new sk.transitions.FadeInOut(500))
+  game.scenes.play('intro', new sk.transitions.FadeInOut(500))
 })
