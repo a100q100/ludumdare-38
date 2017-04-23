@@ -2,7 +2,11 @@
 <html>
 <head>
   <title>LD38 - A Small World</title>
-  <script type="text/javascript" src="libs/skald.min.js"></script>
+  <link rel="stylesheet" href="libs/remodal.css">
+  <link rel="stylesheet" href="libs/remodal-default-theme.css">
+  <script src="libs/jquery.min.js"></script>
+  <script src="libs/remodal.min.js"></script>
+  <script src="libs/skald.min.js"></script>
 
   <style>
     html, body {
@@ -13,11 +17,74 @@
     canvas {
       margin-top: 50px;
     }
+
+    .remodal {
+      text-align: left;
+    }
   </style>
 </head>
 <body>
-  
+  <div class="remodal" data-remodal-id="modal">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h1>Basic Tutorial!</h1>
+    <p>
+      This is a basic tutorial for the game, I barely could make the game work properly, so forgive me for th poor learning curve.
+    </p>
+
+    <h2 id="tutorial-characters">Characters</h2>
+
+    <table>
+      <tr>
+        <td><img src="assets/uncompressed/icon_dwarf_warrior.png" alt="Dwarf Warrior"></td>
+        <td>
+          <p><b>Dwarf Warrior:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut qui possimus iusto ad, ipsa suscipit! Nemo eligendi ipsa atque eos. Dignissimos quam animi in neque, hic, sint ducimus vitae. Enim.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="assets/uncompressed/icon_elf_mage.png" alt="Elf Mage"></td>
+        <td>
+          <p><b>Elf Mage:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, odit, veritatis? Nam dolorum saepe explicabo dolores libero! Autem eos dolorem laudantium, quisquam! Est aliquid temporibus quam suscipit sint ad dolores?</p>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="assets/uncompressed/icon_elf_ranger.png" alt="Elf Ranger"></td>
+        <td>
+          <p><b>Elf Ranger:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis recusandae eligendi explicabo minima quaerat, tempora quo officia, sunt repellendus nulla nostrum nesciunt necessitatibus hic iure id soluta cum. Odio, voluptate.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="assets/uncompressed/icon_human_mage.png" alt="Human Mage"></td>
+        <td>
+          <p><b>Human Mage:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius beatae, molestias soluta doloribus. Enim, ratione, officia! Repellendus velit amet, tempora perferendis excepturi rem aperiam maxime eius dignissimos, delectus numquam iusto.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="assets/uncompressed/icon_human_warrior.png" alt="Human Warrior"></td>
+        <td>
+          <p><b>Human Warrior:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quod optio delectus? Ratione quae tenetur ad quis, aut neque veritatis laborum necessitatibus aliquid quam autem nam minus, esse explicabo molestias.</p>
+        </td>
+      </tr>
+    </table>
+
+    <h2 id="tutorial-tiles">Tiles</h2>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum illo distinctio praesentium omnis labore voluptas deleniti aut accusantium! Impedit expedita veniam, tenetur dolorem. Sint, laborum, doloribus. Magni exercitationem, quas temporibus.</p>
+
+    <h2 id="tutorial-enemies">Enemies</h2>
+    
+    <h2 id="tutorial-enemies">Combat</h2>
+
+    <br>
+    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+    <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+  </div>
 
   <script type="text/javascript" src="libs/game.min.js"></script>
+  <script>
+    var inst = $('[data-remodal-id=modal]').remodal()
+    window.openTutorial = function() {
+      inst.open()
+    }
+  </script>
 </body>
 </html>

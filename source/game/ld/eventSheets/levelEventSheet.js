@@ -496,11 +496,11 @@ sk.eventSheet({
       )
     },
     digestGameVictory: function(item, next) { 
-      window.alert('Você Ganhou!')
+      window.alert('You Won!')
       next()
     },
     digestGameFailure: function(item, next) { 
-      window.alert('Você Perdeu =(!')
+      window.alert('You lose =(!')
       next()
     },
     digestGameMachineturn: function(item, next) { next() },
