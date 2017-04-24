@@ -299,6 +299,7 @@ export default class Board {
     
     log = log.concat(this._spawn())
     log = log.concat(this._moveEnemies())
+    log = log.concat(this._merge())
     log = log.concat(this._attackHeroes())
 
     if (this._hasUserLose()) {
@@ -332,7 +333,7 @@ export default class Board {
       log.push({
         type   : 'enemy.spawn',
         target : spawn,
-        enemy  : enemy
+        enemy  : sk.utils.deepCopy(enemy)
       })
       
       if (!this._spawnDeck.length) {
@@ -393,68 +394,53 @@ export default class Board {
           type  : 'enemy.movement',
           from  : lastCoord,
           to    : enemy.coord,
-          enemy : enemy,
-          pawn  : minTarget
+          enemy : sk.utils.deepCopy(enemy),
+          pawn  : sk.utils.deepCopy(minTarget)
         })
       }
+    }
 
-      // Merge same type enemies
-      let merge = []
-      for (let t in this.tiles) {
-        let tile = this.tiles[t]
+    return log
+  }
+  _merge() {
+    let log = []
+    // Merge same type enemies
+    let merge = []
+    for (let t in this.tiles) {
+      let tile = this.tiles[t]
 
-        for (let i=tile.enemies.length-1; i>=0; i--) {
-          let first = this._getEnemy(tile.enemies[i])
+      for (let i=tile.enemies.length-1; i>=0; i--) {
+        let first = this._getEnemy(tile.enemies[i])
 
-          for (let j=i-1; j>=0; j--) {
-            let second = this._getEnemy(tile.enemies[j])
-            // console.log('comparing', first.id, 'to', second.id, '...')
-            if (first.type === second.type) {
-              merge.push([first, second, tile])
-              // console.log('merge!')
-              break
-            }
+        for (let j=i-1; j>=0; j--) {
+          let second = this._getEnemy(tile.enemies[j])
+          // console.log('comparing', first.id, 'to', second.id, '...')
+          if (first.type === second.type) {
+            merge.push([first, second, tile])
+            // console.log('merge!')
+            break
           }
         }
       }
+    }
 
-      for (let i=0; i<merge.length; i++) {
-        let from = merge[i][0]
-        let to = merge[i][1]
-        let tile = merge[i][2]
-        let amount = from.amount
+    for (let i=0; i<merge.length; i++) {
+      let from = merge[i][0]
+      let to = merge[i][1]
+      let tile = merge[i][2]
+      let amount = from.amount
 
-        // console.log('merging', from.id, 'and', to.id, from.type, ':', amount)
-        // console.log('previous tile:')
-        // for (let z=0; z<tile.enemies.length; z++) {
-        //   console.log(tile.enemies[z])
-        // }
-        // console.log('previous board:')
-        // for (let z=0; z<this.enemies.length; z++) {
-        //   console.log(this.enemies[z])
-        // }
+      log.push({
+        type   : 'enemy.merged',
+        first  : from,
+        second : to,
+        amount : amount,
+        coord  : to.coord
+      })
 
-        log.push({
-          type   : 'enemy.merged',
-          first  : from,
-          second : to,
-          amount : amount,
-          coord  : to.coord
-        })
-
-        to.amount += from.amount
-        tile.removeEnemy(from.id)
-        this.enemies.splice(this.enemies.indexOf(from), 1)
-
-        // console.log('after tile:')
-        // for (let z=0; z<tile.enemies.length; z++) {
-        //   console.log(tile.enemies[z])
-        // }
-        // console.log('after board:')
-        // for (let z=0; z<this.enemies.length; z++) {
-        //   console.log(this.enemies[z])
-        // }
-      }
+      to.amount += from.amount
+      tile.removeEnemy(from.id)
+      this.enemies.splice(this.enemies.indexOf(from), 1)
     }
 
     return log
@@ -465,6 +451,7 @@ export default class Board {
     let attacks = {}
 
     // Compute attacks from all enemies in the same tile
+    let ds = []
     for (let i=0; i<this._enemies.length; i++) {
       let enemy = this._enemies[i]
 
@@ -475,6 +462,7 @@ export default class Board {
 
       if (!attacks[enemy.coord]) attacks[enemy.coord] = 0
 
+      ds.push(enemy.attack)
       let attack = utils.dice(enemy.attack)
       attacks[enemy.coord] += attack
 
@@ -482,8 +470,8 @@ export default class Board {
         type   : 'enemy.attack',
         target : enemy.coord,
         damage : attack,
-        enemy  : enemy,
-        pawns  : tile.pawns.map(x => this._pawns[x])
+        enemy  : sk.utils.deepCopy(enemy),
+        pawns  : sk.utils.deepCopy(tile.pawns.map(x => this._pawns[x]))
       })
     }
 
@@ -496,11 +484,14 @@ export default class Board {
       let pawns = this.tiles[coord].pawns.map(x => this._pawns[x])
       let defense = pawns.reduce((v, x) => v+utils.dice(x.defense), 0)
 
+
+      console.log(`Combat: enemy(d${ds}=${attack}) x pawn(${defense})`)
+
       log.push({
         type    : 'pawn.defense',
         damage  : attack,
         defense : defense,
-        pawns   : pawns
+        pawns   : sk.utils.deepCopy(pawns)
       })
       // console.log('Pawns defending with', defense)
 
@@ -517,7 +508,7 @@ export default class Board {
           type    : 'pawn.killed',
           damage  : attack,
           defense : defense,
-          pawn    : pawn
+          pawn    : sk.utils.deepCopy(pawn)
         })
         // console.log(dead.name, 'is dead')
 

@@ -47,7 +47,7 @@
     },
     "extraActions": false,
     "attack": 2,
-    "defense": 10,
+    "defense": 15,
     "range": 0
   },
   "human_mage": {
@@ -62,7 +62,7 @@
     "movementMods": {
     },
     "extraActions": false,
-    "attack": 20,
+    "attack": 25,
     "defense": 0,
     "range": 1
   },
@@ -76,6 +76,7 @@
     "title": "Elf Archer",
     "actions": 2,
     "movementMods": {
+      "forest": -1
     },
     "extraActions": false,
     "attack": 10,

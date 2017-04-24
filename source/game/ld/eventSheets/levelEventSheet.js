@@ -9,7 +9,7 @@ sk.eventSheet({
     'mouseclick': function() {
       if (this.pawn === null && this.action === null) return
 
-      let coord = board.positionToCoord(game.mouse.x+100, game.mouse.y+100)
+      let coord = board.positionToCoord(game.mouse.x-this.scene.offset.x, game.mouse.y-this.scene.offset.y)
       let target = [coord.q, coord.r]
       if (board.canAct(this.pawn, this.action, target)) {
         this.hideTargets()
@@ -164,7 +164,7 @@ sk.eventSheet({
         let item = stack.shift()
         if (!item) return next()
 
-        // console.log('processing', item)
+        console.log(item)
         if (item.type === 'pawn.movement') this.digestPawnMovement(item, next)
         else if (item.type === 'pawn.attack') this.digestPawnAttack(item, next)
         else if (item.type === 'pawn.defense') this.digestPawnDefense(item, next)
@@ -471,6 +471,8 @@ sk.eventSheet({
       )
     },
     digestEnemyDamaged: function(item, next) { 
+      let enemy = this.scene._enemies[item.enemy.id]
+      enemy.text.text = item.enemy.amount
       next()
     },
     digestEnemyMerged: function(item, next) {

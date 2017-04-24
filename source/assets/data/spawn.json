@@ -16,6 +16,13 @@
     {"enemy": "goblin", "amount": 10},
     {"enemy": "goblin", "amount": 10},
     {"enemy": "goblin", "amount": 10},
-    {"enemy": "troll", "amount": 1}
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "troll", "amount": 1},
+    {"enemy": "dragon", "amount": 1}
   ]
 }

@@ -101,12 +101,12 @@ sk.scene({
 
       this._targets = this.addEntity('targets', 'overlay')
 
-      let offset = {x:-100, y:-100}
-      this.layers['map'].position = offset
-      this.layers['tokens'].position = offset
-      this.layers['enemies'].position = offset
-      this.layers['pawns'].position = offset
-      this.layers['overlay'].position = offset
+      this.offset = {x:-100, y:-120}
+      this.layers['map'].position = this.offset
+      this.layers['tokens'].position = this.offset
+      this.layers['enemies'].position = this.offset
+      this.layers['pawns'].position = this.offset
+      this.layers['overlay'].position = this.offset
 
 
       // Map elements

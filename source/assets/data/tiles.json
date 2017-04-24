@@ -22,8 +22,8 @@
 
   "lake": {
     "type": "lake",
-    "image": "tile_lake",
+    "image": "tile_water",
     "restrict": true,
-    "movementCost": 5
+    "movementCost": 10
   }
 }

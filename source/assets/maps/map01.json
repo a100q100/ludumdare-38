@@ -4,16 +4,22 @@
   
   "tiles": [
     {"q":7, "r":2, "type":"plain"},
+    {"q":3, "r":3, "type":"lake"},
+    {"q":4, "r":3, "type":"plain"},
     {"q":5, "r":3, "type":"forest"},
     {"q":6, "r":3, "type":"plain"},
     {"q":7, "r":3, "type":"plain"},
+    {"q":3, "r":4, "type":"plain"},
+    {"q":4, "r":4, "type":"plain"},
     {"q":5, "r":4, "type":"forest"},
     {"q":6, "r":4, "type":"forest"},
     {"q":7, "r":4, "type":"forest"},
+    {"q":8, "r":4, "type":"lake"},
     {"q":4, "r":5, "type":"mountain"},
-    {"q":5, "r":5, "type":"plain"},
+    {"q":5, "r":5, "type":"forest"},
     {"q":6, "r":5, "type":"mountain"},
-    {"q":7, "r":5, "type":"plain"},
+    {"q":7, "r":5, "type":"forest"},
+    {"q":8, "r":5, "type":"lake"},
     {"q":3, "r":6, "type":"plain"},
     {"q":4, "r":6, "type":"plain"},
     {"q":5, "r":6, "type":"plain"},
@@ -22,7 +28,9 @@
     {"q":8, "r":6, "type":"plain"},
     {"q":3, "r":7, "type":"plain"},
     {"q":4, "r":7, "type":"plain"},
-    {"q":7, "r":7, "type":"plain"}
+    {"q":6, "r":7, "type":"plain"},
+    {"q":7, "r":7, "type":"plain"},
+    {"q":6, "r":8, "type":"plain"}
   ],
 
   "enemies": [],
@@ -30,12 +38,13 @@
   "initial": {"q":3, "r":7},
 
   "spawnPoints": [
-    {"q":3, "r":6}
+    {"q":3, "r":6},
+    {"q":3, "r":4}
   ],
 
   "goals": [
     {"type":"pickup", "object":"crown", "coord":{"q":7, "r":2}},
-    {"type":"movement", "object":"fort", "coord":{"q":7, "r":7}}
+    {"type":"movement", "object":"fort", "coord":{"q":6, "r":8}}
   ]
 
 }

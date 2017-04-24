@@ -162,7 +162,7 @@ export class attack {
       type   : 'pawn.attack',
       target : target,
       damage : attack,
-      pawn   : pawn
+      pawn   : sk.utils.deepCopy(pawn)
     })
 
     for (let i=0; i<enemies.length; i++) {
@@ -170,21 +170,22 @@ export class attack {
       let enemy = enemies[i]
       let defense = utils.dice(enemy.defense)
       // console.log(enemy.name, 'defending with', defense)
+      console.log(`Combat: pawn(d${pawn.attack}=${attack}) x enemy[${enemy.amount}](d${enemy.defense}=${defense})`)
 
       let dead = attack - defense
       log.push({
         type    : 'enemy.defense',
         defense : defense,
         damage  : dead,
-        enemy   : enemy,
-        pawn    : pawn
+        enemy   : sk.utils.deepCopy(enemy),
+        pawn    : sk.utils.deepCopy(pawn)
       })
 
       if (dead > 0) {
         let total = enemy.amount - dead
         if (total <= 0) {
-          // console.log(enemy.name, 'dead')
-          deads.push(i)
+          console.log(`Enemy died from ${dead} damage. ${total} remaining for the next enemy`)
+          deads.push(enemy)
           enemy.amount = total
           attack = Math.abs(total)
 
@@ -192,11 +193,12 @@ export class attack {
             type    : 'enemy.killed',
             defense : defense,
             damage  : dead,
-            enemy   : enemy,
-            pawn    : pawn
+            enemy   : sk.utils.deepCopy(enemy),
+            pawn    : sk.utils.deepCopy(pawn)
           })
 
         } else {
+          console.log(`Enemies din't die, ${total} remaining`)
           // console.log(enemy.name, 'had', enemy.amount, 'and now have', total)
           enemy.amount = total
 
@@ -204,8 +206,8 @@ export class attack {
             type    : 'enemy.damaged',
             defense : defense,
             damage  : dead,
-            enemy   : enemy,
-            pawn    : pawn
+            enemy   : sk.utils.deepCopy(enemy),
+            pawn    : sk.utils.deepCopy(pawn)
           })
         }
       } 
@@ -213,7 +215,8 @@ export class attack {
 
     for (let i=deads.length-1; i>=0; i--) {
       // console.log('removing enemy ', deads[i], 'from board')
-      let enemy = this._board.enemies.splice(deads[i], 1)[0]
+      let enemy = this._board.enemies.splice(this._board.enemies.indexOf(deads[i]), 1)[0]
+      console.log(`Removing enemy ${enemy.type}x${enemy.amount} from the list`)
       let tile = this._board.tiles[enemy.coord]
 
       tile.removeEnemy(enemy.id)
