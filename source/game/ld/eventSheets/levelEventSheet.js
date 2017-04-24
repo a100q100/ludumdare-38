@@ -3,7 +3,7 @@ sk.eventSheet({
 
   events: {
     'game_turnstart': function() {
-      console.log('start')
+      // console.log('start')
     },
 
     'mouseclick': function() {
@@ -164,7 +164,7 @@ sk.eventSheet({
         let item = stack.shift()
         if (!item) return next()
 
-        console.log('processing', item)
+        // console.log('processing', item)
         if (item.type === 'pawn.movement') this.digestPawnMovement(item, next)
         else if (item.type === 'pawn.attack') this.digestPawnAttack(item, next)
         else if (item.type === 'pawn.defense') this.digestPawnDefense(item, next)

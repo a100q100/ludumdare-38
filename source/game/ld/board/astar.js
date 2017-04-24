@@ -6,7 +6,12 @@ export default function(board, from, to, allowMountain=false) {
 
   visited[states[0].coord] = true
   while (states.length) {
+    // console.log('=========================================================')
+    // for (let i=0; i<states.length; i++) {
+    //   console.log(states[i].coord, states[i].cost, states[i])
+    // }
     let state = states.shift()
+
 
     // Goal condition
     if (state.coord[0] === to[0] && state.coord[1] === to[1]) {
@@ -50,12 +55,18 @@ function getNeighboors(board, state, to, allowMountain)  {
 
     if (!tile) continue
     if (tile.type === 'lake') continue
-    if (tile.type === 'mountain' && !allowMountain) extracost = 5
+    if (tile.type === 'mountain' && !allowMountain) {
+      extracost = 10
+    }
+    if (tile.type === 'forest') {
+      extracost = 1
+    }
+    // console.log('checking tile', coord, tile.type, 'with', state.c1, 'inherited, and', 1+extracost, 'due to the terrain')
 
     let history = state.history.slice()
     history.push(dir)
 
-    let c1 = state.c1 += 1+extracost
+    let c1 = state.c1 + 1+extracost
     let c2 = utils.distance(coord, to)
     let cost = c1 + c2
 

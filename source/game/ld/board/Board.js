@@ -310,7 +310,7 @@ export default class Board {
     }
 
     this._initializePlayerTurn()
-    this.report()
+    // this.report()
 
     return log
   }
@@ -408,10 +408,10 @@ export default class Board {
 
           for (let j=i-1; j>=0; j--) {
             let second = this._getEnemy(tile.enemies[j])
-            console.log('comparing', first.id, 'to', second.id, '...')
+            // console.log('comparing', first.id, 'to', second.id, '...')
             if (first.type === second.type) {
               merge.push([first, second, tile])
-              console.log('merge!')
+              // console.log('merge!')
               break
             }
           }
@@ -424,15 +424,15 @@ export default class Board {
         let tile = merge[i][2]
         let amount = from.amount
 
-        console.log('merging', from.id, 'and', to.id, from.type, ':', amount)
-        console.log('previous tile:')
-        for (let z=0; z<tile.enemies.length; z++) {
-          console.log(tile.enemies[z])
-        }
-        console.log('previous board:')
-        for (let z=0; z<this.enemies.length; z++) {
-          console.log(this.enemies[z])
-        }
+        // console.log('merging', from.id, 'and', to.id, from.type, ':', amount)
+        // console.log('previous tile:')
+        // for (let z=0; z<tile.enemies.length; z++) {
+        //   console.log(tile.enemies[z])
+        // }
+        // console.log('previous board:')
+        // for (let z=0; z<this.enemies.length; z++) {
+        //   console.log(this.enemies[z])
+        // }
 
         log.push({
           type   : 'enemy.merged',
@@ -446,14 +446,14 @@ export default class Board {
         tile.removeEnemy(from.id)
         this.enemies.splice(this.enemies.indexOf(from), 1)
 
-        console.log('after tile:')
-        for (let z=0; z<tile.enemies.length; z++) {
-          console.log(tile.enemies[z])
-        }
-        console.log('after board:')
-        for (let z=0; z<this.enemies.length; z++) {
-          console.log(this.enemies[z])
-        }
+        // console.log('after tile:')
+        // for (let z=0; z<tile.enemies.length; z++) {
+        //   console.log(tile.enemies[z])
+        // }
+        // console.log('after board:')
+        // for (let z=0; z<this.enemies.length; z++) {
+        //   console.log(this.enemies[z])
+        // }
       }
     }
 

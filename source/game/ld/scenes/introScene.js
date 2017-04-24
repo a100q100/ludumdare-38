@@ -25,14 +25,14 @@ sk.scene({
           texture: game.resources.get('background')
         })
 
-    this.title = new sk.displayObjects.Text('Small World', {fill:0x333333})
+    this.title = new sk.displayObjects.Text('Small Board', {fill:0x333333})
                       .configure({
                         anchor : {x:.5, y:.5},
                         x      : game.display.halfWidth,
                         y      : 200,
                         alpha  : 0
                       })
-    this.subtitle = new sk.displayObjects.Text('ludumdare #38', {fontSize: 20, fill:0x333333})
+    this.subtitle = new sk.displayObjects.Text('ludumdare #38 - A Small World', {fontSize: 20, fill:0x333333})
                       .configure({
                         anchor : {x:.5, y:.5},
                         x      : game.display.halfWidth,
