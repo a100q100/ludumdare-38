@@ -498,10 +498,12 @@ sk.eventSheet({
     digestGameVictory: function(item, next) { 
       window.alert('You Won!')
       next()
+      game.scenes.play('character', new sk.transitions.FadeInOut(1000))
     },
     digestGameFailure: function(item, next) { 
       window.alert('You lose =(!')
       next()
+      game.scenes.play('character', new sk.transitions.FadeInOut(1000))
     },
     digestGameMachineturn: function(item, next) { next() },
     digestGamePlayerturn: function(item, next) { next() },

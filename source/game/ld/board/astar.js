@@ -46,15 +46,16 @@ function getNeighboors(board, state, to, allowMountain)  {
     let dir = dirs[i]
     let coord = utils.next(state.coord, dir)
     let tile = board.tiles[coord]
+    let extracost = 0
 
     if (!tile) continue
     if (tile.type === 'lake') continue
-    if (tile.type === 'mountain' && !allowMountain) continue
+    if (tile.type === 'mountain' && !allowMountain) extracost = 5
 
     let history = state.history.slice()
     history.push(dir)
 
-    let c1 = state.c1 += 1
+    let c1 = state.c1 += 1+extracost
     let c2 = utils.distance(coord, to)
     let cost = c1 + c2
 

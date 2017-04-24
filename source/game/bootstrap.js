@@ -20,10 +20,10 @@ game.addEventListener('resourcecomplete', function() {
   )
   global.board = board
 
-  board.loadMap(
-    game.resources.get('map_01'),
-    ['human_warrior', 'human_mage']
-  )
+  // board.loadMap(
+  //   game.resources.get('map_01'),
+  //   ['human_warrior', 'human_mage']
+  // )
 
-  game.scenes.play('intro', new sk.transitions.FadeInOut(500))
+  game.scenes.play('character', new sk.transitions.FadeInOut(500))
 })

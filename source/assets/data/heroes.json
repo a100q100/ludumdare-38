@@ -66,12 +66,12 @@
     "defense": 0,
     "range": 1
   },
-  "elf_archer": {
-    "type": "elf_archer",
-    "image": "elf_archer",
-    "icon": "icon_elf_archer",
-    "avatar": "avatar_elf_archer",
-    "pawn": "pawn_elf_archer",
+  "elf_mage": {
+    "type": "elf_mage",
+    "image": "elf_mage",
+    "icon": "icon_elf_mage",
+    "avatar": "avatar_elf_mage",
+    "pawn": "pawn_elf_mage",
     "name": "Bin'golin",
     "title": "Elf Archer",
     "actions": 2,
@@ -81,39 +81,5 @@
     "attack": 10,
     "defense": 5,
     "range": 2
-  },
-  "dwarf_mage": {
-    "type": "dwarf_mage",
-    "image": "dwarf_mage",
-    "icon": "icon_dwarf_mage",
-    "avatar": "avatar_dwarf_mage",
-    "pawn": "pawn_dwarf_mage",
-    "name": "Thwryn",
-    "title": "Dwarf Mage",
-    "actions": 2,
-    "movementMods": {
-      "mountain": -1,
-      "plain": 1
-    },
-    "extraActions": false,
-    "attack": 10,
-    "defense": 5,
-    "range": 1
-  },
-  "human_specialist": {
-    "type": "human_specialist",
-    "image": "human_specialist",
-    "icon": "icon_human_specialist",
-    "avatar": "avatar_human_specialist",
-    "pawn": "pawn_human_specialist",
-    "name": "Nikota Piruca",
-    "title": "Human Specialist",
-    "actions": 3,
-    "movementMods": {
-    },
-    "extraActions": false,
-    "attack": 6,
-    "defense": 6,
-    "range": 0
   }
 }

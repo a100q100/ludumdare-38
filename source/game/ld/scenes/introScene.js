@@ -83,7 +83,7 @@ sk.scene({
     }, 200)
     this.job(1000, th => this.author.alpha = sk.utils.easing.quadInOut(th), () => {
       this.job(1000, th => this.author.alpha = 1-sk.utils.easing.quadInOut(th), () => {
-        game.scenes.play('level', new sk.transitions.FadeIn(500))
+        game.scenes.play('character', new sk.transitions.FadeIn(500))
       }, 1500)
     }, 300)
   }
