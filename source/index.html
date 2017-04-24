@@ -21,62 +21,240 @@
     .remodal {
       text-align: left;
     }
+    .middle { 
+      vertical-align: middle;
+    }
+    .top {
+      vertical-align: top;
+    }
+    .center {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="remodal" data-remodal-id="modal">
     <button data-remodal-action="close" class="remodal-close"></button>
-    <h1>Basic Tutorial!</h1>
+
+    <div style="text-align:center">
+      <h1>Small Board Tutorial</h1>
+      <p>
+        This is a basic tutorial for the game, I barely could make the game work properly, so forgive me for the poor learning curve.
+      </p>
+    </div>
+
+    <h2 id="tutorial-rules">General rules &amp; Goals</h2>
+
     <p>
-      This is a basic tutorial for the game, I barely could make the game work properly, so forgive me for th poor learning curve.
+      You control two pawns - <i>heroes working for good of the kingdom</i> - and your mission is to find the king's crown and take it back to the castle.
     </p>
 
-    <h2 id="tutorial-characters">Characters</h2>
+    <table style="width: 100%">
+      <tr><td style="text-align:center;"">
+        <img class="middle "src="assets/uncompressed/icon_elf_ranger.png" alt="">
+        <span class="middle">&rarr;</span>
+        <img class="middle "src="assets/uncompressed/token_item.png" alt="">
+        <span class="middle">&rarr;</span>
+        <img class="middle "src="assets/uncompressed/token_fort.png" alt="">
+      </td></tr>
+    </table>
+
+    <p>
+      Each pawn have two actions, which can be:
+    </p>
 
     <table>
       <tr>
-        <td><img src="assets/uncompressed/icon_dwarf_warrior.png" alt="Dwarf Warrior"></td>
-        <td>
-          <p><b>Dwarf Warrior:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut qui possimus iusto ad, ipsa suscipit! Nemo eligendi ipsa atque eos. Dignissimos quam animi in neque, hic, sint ducimus vitae. Enim.</p>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/icon_wait.png" alt="" width="30px">
+          wait <i>just pass the turn.</i>
         </td>
       </tr>
       <tr>
-        <td><img src="assets/uncompressed/icon_elf_mage.png" alt="Elf Mage"></td>
-        <td>
-          <p><b>Elf Mage:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, odit, veritatis? Nam dolorum saepe explicabo dolores libero! Autem eos dolorem laudantium, quisquam! Est aliquid temporibus quam suscipit sint ad dolores?</p>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/icon_movement.png" alt="" width="30px">
+          move <i>walks a single tile depending on the tile type (see below).</i>
         </td>
       </tr>
       <tr>
-        <td><img src="assets/uncompressed/icon_elf_ranger.png" alt="Elf Ranger"></td>
-        <td>
-          <p><b>Elf Ranger:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis recusandae eligendi explicabo minima quaerat, tempora quo officia, sunt repellendus nulla nostrum nesciunt necessitatibus hic iure id soluta cum. Odio, voluptate.</p>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/icon_attack.png" alt="" width="30px">
+          attack <i>attack one tile. It ends the pawn's turn immediately.</i>
         </td>
       </tr>
       <tr>
-        <td><img src="assets/uncompressed/icon_human_mage.png" alt="Human Mage"></td>
-        <td>
-          <p><b>Human Mage:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius beatae, molestias soluta doloribus. Enim, ratione, officia! Repellendus velit amet, tempora perferendis excepturi rem aperiam maxime eius dignissimos, delectus numquam iusto.</p>
-        </td>
-      </tr>
-      <tr>
-        <td><img src="assets/uncompressed/icon_human_warrior.png" alt="Human Warrior"></td>
-        <td>
-          <p><b>Human Warrior:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quod optio delectus? Ratione quae tenetur ad quis, aut neque veritatis laborum necessitatibus aliquid quam autem nam minus, esse explicabo molestias.</p>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/icon_pickup.png" alt="" width="30px">
+          pick object <i>pick the crown if you are at the same tile.</i>
         </td>
       </tr>
     </table>
 
-    <h2 id="tutorial-tiles">Tiles</h2>
+    <p>
+      The tiles may have a special cost to walk on it, or even be unwalkable at all. The table below show the costs to walk on a tile:
+    </p>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum illo distinctio praesentium omnis labore voluptas deleniti aut accusantium! Impedit expedita veniam, tenetur dolorem. Sint, laborum, doloribus. Magni exercitationem, quas temporibus.</p>
+    <table>
+      <tr>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/tile_grass.png" alt="" width="30px">
+          1 action - <i>dwarves require 2 actions.</i>
+        </td>
+      </tr>
+      <tr>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/tile_forest.png" alt="" width="30px">
+          2 actions - <i>elves require only 1 action.</i>
+        </td>
+      </tr>
+      <tr>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/tile_mountain.png" alt="" width="30px">
+          Unwalkable - <i>dwarves may walk for 2 actions.</i>
+        </td>
+      </tr>
+      <tr>
+        <td class="middle">
+          <img class="middle" src="assets/uncompressed/tile_water.png" alt="" width="30px">
+          Unwalkable.
+        </td>
+      </tr>
+    </table>
+
+    <p>After your pawn, the game will take its turn, performing the following actions (in order):</p>
+
+    <ul>
+      <li><b>spawn:</b> spawn one random unit or pack of enemies at spawn points <img src="assets/uncompressed/token_spawn.png" alt="" width="30px">.</li>
+      <li><b>move:</b> move all enemies, except the ones that have just spawned, to the nearest hero to them. The enemies may walk on moutains to reach dwarves, but they will prefer to walk around them.</li>
+      <li><b>attack:</b> all enemies within the same tile of a pawn will attack, except the ones that just spawned or moved.</li>
+    </ul>
+
+
+    <h2 id="tutorial-characters">Characters</h2>
+
+    <table style="text-align: center">
+      <tr>
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/icon_elf_mage.png" alt="Elf Mage">
+            <br>
+            <b>
+              Bin'golin<br>
+              <small>the elf mage</small>
+            </b><br><br>
+            Attack: 10<br>
+            Defense: 5<br>
+            Range: 2<br><br>
+            <i>
+              Spend 1 action to walk on forests.
+            </i>
+          </div>
+        </td>
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/icon_human_mage.png" alt="Human Mage">
+            <br>
+            <b>
+              Pana Cota<br>
+              <small>the human mage</small>
+            </b><br><br>
+            Attack: 25<br>
+            Defense: 0<br>
+            Range: 1<br><br>
+          </div>
+        </td>
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/icon_elf_ranger.png" alt="Elf Ranger">
+            <br>
+            <b>
+              Kin'olin<br>
+              <small>the elf ranger</small>
+            </b><br><br>
+            Attack: 15<br>
+            Defense: 5<br>
+            Range: 1<br><br>
+            <i>
+              Spend 1 action to walk on forests.
+            </i>
+          </div>
+        </td>
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/icon_human_warrior.png" alt="Human Warrior">
+            <br>
+            <b>
+              Greta Marieta<br>
+              <small>the human warrior</small>
+            </b><br><br>
+            Attack: 2<br>
+            Defense: 15<br>
+            Range: 0<br>
+          </div>
+        </td>
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/icon_dwarf_warrior.png" alt="Dwarf Warrior"><br>
+            <b>
+              Myxzpylk<br>
+              <small>the dwarf warrior</small>
+            </b><br><br>
+            Attack: 10<br>
+            Defense: 10<br>
+            Range: 0<br><br>
+            <i>
+              Can walk on mountains for 2 actions.<br><br>
+              Spend 2 actions to walk on plains.
+            </i>
+          </div>
+        </td>
+      </tr>
+    </table>
 
     <h2 id="tutorial-enemies">Enemies</h2>
     
-    <h2 id="tutorial-enemies">Combat</h2>
+    <table style="text-align: center">
+      <tr>
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/token_goblin.png" alt="Goblin">
+            <br>
+            <b>Goblin</b><br><br>
+            Attack: (same as the amount of goblins)<br>
+            Defense: 0<br>
+          </div>
+        </td>
+
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/token_troll.png" alt="Goblin">
+            <br>
+            <b>Troll</b><br><br>
+            Attack: 10<br>
+            Defense: 6<br>
+          </div>
+        </td>
+
+        <td class="center top" style="width:20%">
+          <div class="top">
+            <img src="assets/uncompressed/token_dragon.png" alt="Goblin">
+            <br>
+            <b>Dragon</b><br><br>
+            Attack: 20<br>
+            Defense: 20<br>
+          </div>
+        </td>
+      </tr>
+    </table>
 
     <br>
-    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-    <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+    <br>
+    <br>
+    <br>
+
+    <div style="text-align:center">
+      <button data-remodal-action="confirm" class="remodal-confirm">Continue</button>
+    </div>
   </div>
 
   <script type="text/javascript" src="libs/game.min.js"></script>

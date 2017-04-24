@@ -10,6 +10,15 @@ sk.scene({
     'button'
   ],
   initialize: function() {
+    if (window.localStorage) {
+      if (!window.localStorage.getItem('tutorial')) {
+        window.localStorage.setItem('tutorial', true)
+        window.openTutorial()
+      }
+    }
+
+
+
     this._jobs = []
     // Methods
     this.job = function(duration, updateFn, completeFn, delay) {

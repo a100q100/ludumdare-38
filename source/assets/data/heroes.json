@@ -40,7 +40,7 @@
     "icon": "icon_human_warrior",
     "avatar": "avatar_human_warrior",
     "pawn": "pawn_human_warrior",
-    "name": "Marieta Greta",
+    "name": "Greta Marieta",
     "title": "Human Defender",
     "actions": 2,
     "movementMods": {
@@ -56,7 +56,7 @@
     "icon": "icon_human_mage",
     "avatar": "avatar_human_mage",
     "pawn": "pawn_human_mage",
-    "name": "Granjo Banjo",
+    "name": "Pana Cota",
     "title": "Human Mage",
     "actions": 2,
     "movementMods": {
