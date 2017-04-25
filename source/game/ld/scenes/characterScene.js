@@ -119,7 +119,7 @@ sk.scene({
         
         let extraDelay = 0
         if (this._heroes.indexOf(this._buttons[i].__id__) >= 0) {
-          extraDelay = (size)*200 + 500
+          extraDelay = (size)*200 + 100
         }
         
         this.job(500, 
@@ -131,9 +131,23 @@ sk.scene({
             button.display.alpha = 0
             if (i===0) {
 
-              board.loadMap(game.resources.get('map_01'), this._heroes)
+              // this.job(1000, (th) => {
+              //   for (let z=0; z<this._buttons.length; z++) {
+              //     if (this._heroes.indexOf(this._buttons[z].__id__) >= 0) {
+              //       this._buttons[z].display.alpha = Math.sin(th*4*Math.PI)
+              //     }
+              //   }
+              // }, () => {
+              // board.loadMap(game.resources.get('map_01'), this._heroes)
 
-              game.scenes.play('level', new sk.transitions.FadeIn(1000))
+              // game.scenes.play('level', new sk.transitions.FadeIn(1000))
+                
+              // })
+              setTimeout(()=> {
+                board.loadMap(game.resources.get('map_01'), this._heroes)
+
+                game.scenes.play('level', new sk.transitions.FadeIn(1000))
+              }, 500)
             }
           }
         , delay+extraDelay)
