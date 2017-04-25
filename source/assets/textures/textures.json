@@ -47,11 +47,25 @@
         "x": 0.5,
         "y": 0.5
       },
-      "id": "avatar_human_mage",
+      "id": "avatar_hidden",
       "rect": {
         "height": 88,
         "width": 88,
         "x": 411,
+        "y": 60
+      },
+      "rotated": false
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "id": "avatar_human_mage",
+      "rect": {
+        "height": 88,
+        "width": 88,
+        "x": 499,
         "y": 60
       },
       "rotated": false
@@ -93,7 +107,7 @@
       "rect": {
         "height": 38,
         "width": 59,
-        "x": 449,
+        "x": 350,
         "y": 0
       },
       "rotated": false
@@ -107,7 +121,7 @@
       "rect": {
         "height": 109,
         "width": 97,
-        "x": 0,
+        "x": 86,
         "y": 161
       },
       "rotated": false
@@ -121,7 +135,7 @@
       "rect": {
         "height": 121,
         "width": 95,
-        "x": 97,
+        "x": 183,
         "y": 161
       },
       "rotated": false
@@ -135,7 +149,7 @@
       "rect": {
         "height": 133,
         "width": 107,
-        "x": 192,
+        "x": 278,
         "y": 161
       },
       "rotated": false
@@ -149,7 +163,7 @@
       "rect": {
         "height": 135,
         "width": 85,
-        "x": 299,
+        "x": 385,
         "y": 161
       },
       "rotated": false
@@ -163,7 +177,7 @@
       "rect": {
         "height": 144,
         "width": 74,
-        "x": 384,
+        "x": 470,
         "y": 161
       },
       "rotated": false
@@ -177,7 +191,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 213,
+        "x": 137,
         "y": 0
       },
       "rotated": false
@@ -191,7 +205,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 137,
+        "x": 175,
         "y": 0
       },
       "rotated": false
@@ -289,7 +303,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 175,
+        "x": 213,
         "y": 0
       },
       "rotated": false
@@ -373,7 +387,7 @@
       "rect": {
         "height": 38,
         "width": 23,
-        "x": 350,
+        "x": 485,
         "y": 0
       },
       "rotated": false
@@ -415,8 +429,8 @@
       "rect": {
         "height": 101,
         "width": 86,
-        "x": 671,
-        "y": 60
+        "x": 0,
+        "y": 161
       },
       "rotated": false
     },
@@ -429,7 +443,7 @@
       "rect": {
         "height": 101,
         "width": 86,
-        "x": 499,
+        "x": 587,
         "y": 60
       },
       "rotated": false
@@ -443,7 +457,7 @@
       "rect": {
         "height": 101,
         "width": 86,
-        "x": 585,
+        "x": 673,
         "y": 60
       },
       "rotated": false
@@ -457,7 +471,7 @@
       "rect": {
         "height": 101,
         "width": 86,
-        "x": 757,
+        "x": 759,
         "y": 60
       },
       "rotated": false
@@ -471,7 +485,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 411,
+        "x": 447,
         "y": 0
       },
       "rotated": false
@@ -499,7 +513,7 @@
       "rect": {
         "height": 38,
         "width": 38,
-        "x": 373,
+        "x": 409,
         "y": 0
       },
       "rotated": false

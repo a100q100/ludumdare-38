@@ -56,11 +56,11 @@ sk.scene({
       let name = names[i]
       let data = heroes[names[i]]
       let button = this.addEntity('button')
-      button.display.texture = game.resources.get(data.avatar)
+      button.display.texture_real = game.resources.get(data.avatar)
+      button.display.texture = game.resources.get('avatar_hidden')
       button.display.anchor = {x:.5, y:.5},
       button.display.x = x
       button.display.y = game.display.halfHeight
-      button.display.tint = 0x000000
       button.__id__ = name
 
       x += padding + 88
@@ -74,25 +74,27 @@ sk.scene({
 
         this.job(800,
           th=>{
-            th = sk.utils.easing.circOut(th)
+            th = sk.utils.easing.quadOut(th)
             if (th < 0.5 && going) {
               button.display.alpha = 1-(th*2)
             } else {
               if (going) {
                 going = false
-                button.display.tint=0xFFFFFF
+                // button.display.tint=0xFFFFFF
+                button.display.texture = button.display.texture_real
               }
 
               button.display.alpha = ((th-.5)*2)
             }
           },
           ()=>{
-              button.display.alpha = 1
-            if (finished) {
-              this.finish()
-            }
+            button.display.alpha = 1
           }
         )
+
+        if (finished) {
+          this.finish()
+        }
       })
 
 
@@ -117,7 +119,7 @@ sk.scene({
         
         let extraDelay = 0
         if (this._heroes.indexOf(this._buttons[i].__id__) >= 0) {
-          extraDelay = (size)*200 + 200
+          extraDelay = (size)*200 + 500
         }
         
         this.job(500, 

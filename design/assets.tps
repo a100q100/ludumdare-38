@@ -202,6 +202,7 @@
             <key type="filename">exported/avatar_dwarf_warrior.png</key>
             <key type="filename">exported/avatar_elf_mage.png</key>
             <key type="filename">exported/avatar_elf_ranger.png</key>
+            <key type="filename">exported/avatar_hidden.png</key>
             <key type="filename">exported/avatar_human_mage.png</key>
             <key type="filename">exported/avatar_human_warrior.png</key>
             <struct type="IndividualSpriteSettings">
@@ -448,6 +449,7 @@
             <filename>exported/menu_background.png</filename>
             <filename>exported/icon_help.png</filename>
             <filename>exported/button_start.png</filename>
+            <filename>exported/avatar_hidden.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
